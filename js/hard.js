@@ -17,6 +17,11 @@ export const DONE = M.done;
 export const SKIP = M.skip;
 export const EASE = M.ease;
 
+// 抜き：強く言ったあとに、少し遅れて小さく添える決めゼリフ（毎回出す）。
+// 抜くのは「叩きの言葉」の後味だけ。指令の中身と期限はやわらげない。
+// 出さない場所：先人の戦歴（出典つきの事実）／危ない時の停止と相談窓口／「きつすぎる」でゆるめた後
+export const NUKI = '……ようしらんけど。';
+
 // 命に関わるサインがある時（ハードモード停止）
 export const SAFETY_LEAD = 'ここからは、ハードモードを止める。いちばん大事なのは、今のあなたの安全だ。ひとりで抱えずに、話してほしい。';
 
@@ -67,7 +72,8 @@ export function toOrder(step) {
 
 /**
  * 言葉を選んで、ハードモードの伝え方に包む
- * @returns {{mode, safety, word, opener, jab, order, deadline, closer, alternatives, reason}}
+ * @param {object} opts  { seed, exclude, coach, eased }  eased … 「きつすぎる」でゆるめた後（抜きを出さない）
+ * @returns {{mode, safety, word, opener, jab, order, deadline, closer, nuki, alternatives, reason}}
  */
 export function hardSelect(state = {}, prefs = {}, opts = {}) {
   const mood = Math.min(5, Math.max(1, Math.round(Number(state.mood) || 3)));
@@ -90,5 +96,6 @@ export function hardSelect(state = {}, prefs = {}, opts = {}) {
     deadline: energy === 1 ? c.deadline.low : c.deadline.normal,
     closer: pick(mood >= 3 ? [...c.closers, ...c.closersHard] : c.closers, seed + 'c'),
     episode: pickEpisode(mood, concern, seed + 'e'),
+    nuki: opts.eased ? null : NUKI,
   };
 }

@@ -78,11 +78,13 @@ try {
     await page.click('[data-act="more"]');
     await page.waitForFunction((b) => document.querySelector('#result .word-text')?.textContent !== b, before);
     const second = await page.textContent('#result .word-text');
+    assert.equal((await page.textContent('#result .nuki')).trim(), '……ようしらんけど。', 'ふだんは抜きが付く');
     await page.click('[data-act="ease"]');
     await page.waitForFunction((b) => document.querySelector('#result .word-text')?.textContent !== b, second);
     assert.match(await page.textContent('#toast'), /休むのも戦略/);
     const disliked = await page.evaluate(() => JSON.parse(localStorage.getItem('agattekoiya:v1')).prefs.disliked.length);
     assert.equal(disliked, 1);
+    assert.equal(await page.$('#result .nuki'), null, '「きつすぎる」の後は抜きを付けない');
   });
 
   await step('ガードレール：命に関わる言葉 → ハードモード停止・相談窓口', async () => {
@@ -179,6 +181,28 @@ try {
     assert.equal(p.sent.length, 2, '送らない設定では送らない');
     await shot(p, 'app-react');
     await c.close();
+  });
+
+  await step('落ちません。の「……ぬるい？」から来た人：答えが入っていて、迎えの一言と戻るリンク', async () => {
+    const { ctx: c6, page: p6 } = await newPage();
+    await p6.goto(`${base}/app.html`);
+    assert.ok(await p6.isHidden('#fromOchi'), 'ふつうに開いた時は出さない');
+    await p6.goto(`${base}/app.html#from=ochimasen&m=3&e=3&c=money`);
+    await p6.reload();
+    await p6.waitForSelector('#fromOchi:not([hidden])');
+    assert.match(await p6.textContent('#fromOchi'), /落ちません。から来たな。/);
+    assert.equal(await p6.getAttribute('#fromOchi a', 'href'), 'https://ochimasen.h3y.jp/app.html');
+    assert.equal(await p6.getAttribute('[data-mood="3"]', 'aria-pressed'), 'true');
+    assert.equal(await p6.getAttribute('[data-energy="3"]', 'aria-pressed'), 'true');
+    assert.equal(await p6.getAttribute('[data-concern="money"]', 'aria-pressed'), 'true');
+    assert.equal(await p6.inputValue('#freeText'), '', 'ひとことは受け取らない');
+    assert.ok(!(await p6.isDisabled('#goBtn')), 'そのまま押せる');
+    await p6.click('#goBtn');
+    await p6.waitForSelector('#result .nuki');
+    await p6.waitForTimeout(1900);
+    await shot(p6, 'from-ochimasen-nuki', true);
+    await noHScroll(p6);
+    await c6.close();
   });
 
   await step('相談窓口・プライバシー・404', async () => {
