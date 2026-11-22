@@ -1,561 +1,9 @@
-// 言葉データ（RAG）Version 2.1.0 — docs/corpus/import/v2_1-classics.csv, docs/corpus/import/v2_1-originals-doraku.csv, docs/corpus/import/v2_1-originals-learn.csv, docs/corpus/import/v2_1-originals-people.csv, docs/corpus/import/v2_1-originals-self.csv, docs/corpus/import/v2_1-originals-work.csv, docs/corpus/import/v2_1-proverbs.csv から生成。直接は編集しない。
+// 言葉データ（RAG）Version 2.1.1 — docs/corpus/import/v2_1-classics.csv, docs/corpus/import/v2_1-originals-doraku.csv, docs/corpus/import/v2_1-originals-extra.csv, docs/corpus/import/v2_1-originals-learn.csv, docs/corpus/import/v2_1-originals-people.csv, docs/corpus/import/v2_1-originals-self.csv, docs/corpus/import/v2_1-originals-work.csv, docs/corpus/import/v2_1-proverbs.csv から生成。直接は編集しない。
 export const CORPUS_V2_1 = {
-  "version": "2.1.0",
+  "version": "2.1.1",
   "date": "2026-11-22",
   "note": "",
   "items": [
-    {
-      "id": "c21-rongo-ayamachi",
-      "kind": "quote",
-      "text": "あやまちに気づいて改めないこと。それこそが、本当のあやまちだ。",
-      "original": "過ちて改めざる、是を過ちと謂う",
-      "author": "孔子",
-      "field": "思想家",
-      "category": [
-        "learn"
-      ],
-      "source": "『論語』衛霊公篇",
-      "sourceNote": "意訳",
-      "verification": "primary",
-      "rights": "public-domain",
-      "tone": [
-        "steady"
-      ],
-      "mood": [
-        2,
-        5
-      ],
-      "concerns": [
-        "any"
-      ],
-      "tags": [
-        "learn"
-      ],
-      "emotions": [
-        "koukai",
-        "nasakenai"
-      ],
-      "keywords": [
-        "あやまち",
-        "改める",
-        "失敗"
-      ],
-      "step": "最近の小さなミスを一つ選び、次にどう変えるかを一行書く。"
-    },
-    {
-      "id": "c21-rongo-shiru",
-      "kind": "quote",
-      "text": "知っていることは知っている、知らないことは知らないとする。それが「知る」ということだ。",
-      "original": "知るを知ると為し、知らざるを知らずと為す。是れ知るなり",
-      "author": "孔子",
-      "field": "思想家",
-      "category": [
-        "learn",
-        "self"
-      ],
-      "source": "『論語』為政篇",
-      "sourceNote": "意訳",
-      "verification": "primary",
-      "rights": "public-domain",
-      "tone": [
-        "gentle",
-        "steady"
-      ],
-      "mood": [
-        2,
-        5
-      ],
-      "concerns": [
-        "work",
-        "self"
-      ],
-      "tags": [
-        "learn",
-        "reframe"
-      ],
-      "emotions": [
-        "jishinnai",
-        "mayoi"
-      ],
-      "keywords": [
-        "知らない",
-        "わからない",
-        "正直"
-      ],
-      "step": "わからないことを一つ、そのまま「わからない」と誰かに聞いてみる。"
-    },
-    {
-      "id": "c21-rongo-tanoshimu",
-      "kind": "quote",
-      "text": "知っている人は、好きな人にかなわない。好きな人は、楽しんでいる人にかなわない。",
-      "original": "之を知る者は之を好む者に如かず。之を好む者は之を楽しむ者に如かず",
-      "author": "孔子",
-      "field": "思想家",
-      "category": [
-        "work"
-      ],
-      "source": "『論語』雍也篇",
-      "sourceNote": "意訳",
-      "verification": "primary",
-      "rights": "public-domain",
-      "tone": [
-        "steady"
-      ],
-      "mood": [
-        3,
-        5
-      ],
-      "concerns": [
-        "work"
-      ],
-      "tags": [
-        "fun"
-      ],
-      "emotions": [
-        "taikutsu",
-        "wakuwaku"
-      ],
-      "keywords": [
-        "楽しむ",
-        "好き",
-        "道楽"
-      ],
-      "step": "今日の仕事の中で、少しでも楽しめる部分を一つ探す。"
-    },
-    {
-      "id": "c21-rongo-sugitaru",
-      "kind": "quote",
-      "text": "やりすぎは、足りないのと同じくらいよくない。",
-      "original": "過ぎたるは猶及ばざるがごとし",
-      "author": "孔子",
-      "field": "思想家",
-      "category": [
-        "rest",
-        "calm"
-      ],
-      "source": "『論語』先進篇",
-      "sourceNote": "意訳",
-      "verification": "primary",
-      "rights": "public-domain",
-      "tone": [
-        "gentle",
-        "steady"
-      ],
-      "mood": [
-        1,
-        5
-      ],
-      "concerns": [
-        "any",
-        "health"
-      ],
-      "tags": [
-        "rest"
-      ],
-      "emotions": [
-        "tsukare",
-        "oitsumerare"
-      ],
-      "keywords": [
-        "やりすぎ",
-        "ほどほど",
-        "加減"
-      ],
-      "step": "今日は予定を一つ減らして、7割で終える。"
-    },
-    {
-      "id": "c21-rongo-tokoro",
-      "kind": "quote",
-      "text": "人が自分をわかってくれないことは気にしない。自分が人をわかっていないことを気にしよう。",
-      "original": "人の己を知らざるを患えず、人を知らざるを患う",
-      "author": "孔子",
-      "field": "思想家",
-      "category": [
-        "people"
-      ],
-      "source": "『論語』学而篇",
-      "sourceNote": "意訳",
-      "verification": "primary",
-      "rights": "public-domain",
-      "tone": [
-        "steady"
-      ],
-      "mood": [
-        2,
-        5
-      ],
-      "concerns": [
-        "people"
-      ],
-      "tags": [
-        "reframe"
-      ],
-      "emotions": [
-        "sabishii",
-        "moyamoya"
-      ],
-      "keywords": [
-        "わかってもらえない",
-        "理解",
-        "人間関係"
-      ],
-      "step": "身近な人の話を、今日は最後まで聞いてみる。"
-    },
-    {
-      "id": "c21-rongo-onko",
-      "kind": "quote",
-      "text": "古いことを学び直すと、そこから新しい気づきが生まれる。",
-      "original": "故きを温めて新しきを知る",
-      "author": "孔子",
-      "field": "思想家",
-      "category": [
-        "learn"
-      ],
-      "source": "『論語』為政篇",
-      "sourceNote": "意訳",
-      "verification": "primary",
-      "rights": "public-domain",
-      "tone": [
-        "steady"
-      ],
-      "mood": [
-        3,
-        5
-      ],
-      "concerns": [
-        "work",
-        "self"
-      ],
-      "tags": [
-        "learn"
-      ],
-      "emotions": [
-        "mayoi",
-        "taikutsu"
-      ],
-      "keywords": [
-        "学び直す",
-        "振り返る",
-        "気づき"
-      ],
-      "step": "前に書いたメモやノートを一つ読み返す。"
-    },
-    {
-      "id": "c21-rongo-gisoku",
-      "kind": "quote",
-      "text": "正しいとわかっていてやらないのは、勇気がないからだ。",
-      "original": "義を見て為ざるは勇無きなり",
-      "author": "孔子",
-      "field": "思想家",
-      "category": [
-        "step"
-      ],
-      "source": "『論語』為政篇",
-      "sourceNote": "意訳",
-      "verification": "primary",
-      "rights": "public-domain",
-      "tone": [
-        "steady",
-        "push"
-      ],
-      "mood": [
-        4,
-        5
-      ],
-      "concerns": [
-        "any"
-      ],
-      "tags": [
-        "small"
-      ],
-      "emotions": [
-        "chousen",
-        "motokashii"
-      ],
-      "keywords": [
-        "勇気",
-        "やるべきこと",
-        "一歩"
-      ],
-      "step": "わかっているのにやれていないことを、一つだけ5分やる。"
-    },
-    {
-      "id": "c21-rongo-kunshi",
-      "kind": "quote",
-      "text": "立派な人は、まず自分に原因を探す。そうでない人は、人のせいにする。",
-      "original": "君子は諸を己に求め、小人は諸を人に求む",
-      "author": "孔子",
-      "field": "思想家",
-      "category": [
-        "self",
-        "learn"
-      ],
-      "source": "『論語』衛霊公篇",
-      "sourceNote": "意訳",
-      "verification": "primary",
-      "rights": "public-domain",
-      "tone": [
-        "steady"
-      ],
-      "mood": [
-        3,
-        5
-      ],
-      "concerns": [
-        "people",
-        "work"
-      ],
-      "tags": [
-        "learn"
-      ],
-      "emotions": [
-        "iraira",
-        "ikari"
-      ],
-      "keywords": [
-        "人のせい",
-        "振り返り",
-        "自分"
-      ],
-      "step": "イライラした出来事について、自分にできた小さな工夫を一つ考える。"
-    },
-    {
-      "id": "c21-laozi-senri",
-      "kind": "quote",
-      "text": "千里の道も、足もとの一歩から始まる。",
-      "original": "千里の行も足下に始まる",
-      "author": "老子",
-      "field": "思想家",
-      "category": [
-        "step"
-      ],
-      "source": "『老子』第六十四章",
-      "sourceNote": "意訳",
-      "verification": "primary",
-      "rights": "public-domain",
-      "tone": [
-        "gentle",
-        "steady"
-      ],
-      "mood": [
-        2,
-        5
-      ],
-      "concerns": [
-        "any"
-      ],
-      "tags": [
-        "small"
-      ],
-      "emotions": [
-        "muki",
-        "mayoi"
-      ],
-      "keywords": [
-        "一歩",
-        "始める",
-        "小さく"
-      ],
-      "step": "大きなことの最初の一歩を、今日一つだけやる。"
-    },
-    {
-      "id": "c21-laozi-taru",
-      "kind": "quote",
-      "text": "足るを知る人は、豊かだ。",
-      "original": "足るを知る者は富む",
-      "author": "老子",
-      "field": "思想家",
-      "category": [
-        "self",
-        "calm"
-      ],
-      "source": "『老子』第三十三章",
-      "sourceNote": "意訳",
-      "verification": "primary",
-      "rights": "public-domain",
-      "tone": [
-        "gentle",
-        "steady"
-      ],
-      "mood": [
-        1,
-        5
-      ],
-      "concerns": [
-        "money",
-        "self"
-      ],
-      "tags": [
-        "self"
-      ],
-      "emotions": [
-        "shitto",
-        "munashii"
-      ],
-      "keywords": [
-        "足るを知る",
-        "豊か",
-        "満足"
-      ],
-      "step": "今日すでにあるものを、三つ書き出す。"
-    },
-    {
-      "id": "c21-laozi-mizu",
-      "kind": "quote",
-      "text": "いちばんよいものは、水のようだ。争わず、低いところへ流れていく。",
-      "original": "上善は水の如し",
-      "author": "老子",
-      "field": "思想家",
-      "category": [
-        "calm",
-        "people"
-      ],
-      "source": "『老子』第八章",
-      "sourceNote": "意訳",
-      "verification": "primary",
-      "rights": "public-domain",
-      "tone": [
-        "gentle"
-      ],
-      "mood": [
-        1,
-        5
-      ],
-      "concerns": [
-        "people"
-      ],
-      "tags": [
-        "reframe"
-      ],
-      "emotions": [
-        "iraira",
-        "kinchou"
-      ],
-      "keywords": [
-        "水",
-        "争わない",
-        "しなやか"
-      ],
-      "step": "張り合っている相手に、今日は一つゆずってみる。"
-    },
-    {
-      "id": "c21-laozi-taiki",
-      "kind": "quote",
-      "text": "大きな器は、できあがるのが遅い。",
-      "original": "大器は晩成す",
-      "author": "老子",
-      "field": "思想家",
-      "category": [
-        "hope",
-        "keep"
-      ],
-      "source": "『老子』第四十一章",
-      "sourceNote": "意訳",
-      "verification": "primary",
-      "rights": "public-domain",
-      "tone": [
-        "gentle",
-        "steady"
-      ],
-      "mood": [
-        1,
-        5
-      ],
-      "concerns": [
-        "self",
-        "work"
-      ],
-      "tags": [
-        "compare"
-      ],
-      "emotions": [
-        "okiteikareta",
-        "aseri"
-      ],
-      "keywords": [
-        "遅い",
-        "大器晩成",
-        "焦らない"
-      ],
-      "step": "人と比べず、半年前の自分と比べてできるようになったことを一つ書く。"
-    },
-    {
-      "id": "c21-laozi-jiko",
-      "kind": "quote",
-      "text": "人を知る人は賢い。自分を知る人は、もっと明るい。",
-      "original": "人を知る者は智なり、自ら知る者は明なり",
-      "author": "老子",
-      "field": "思想家",
-      "category": [
-        "self"
-      ],
-      "source": "『老子』第三十三章",
-      "sourceNote": "意訳",
-      "verification": "primary",
-      "rights": "public-domain",
-      "tone": [
-        "steady"
-      ],
-      "mood": [
-        2,
-        5
-      ],
-      "concerns": [
-        "self"
-      ],
-      "tags": [
-        "self"
-      ],
-      "emotions": [
-        "mayoi",
-        "moyamoya"
-      ],
-      "keywords": [
-        "自分を知る",
-        "気づき"
-      ],
-      "step": "今日、疲れやすい時間帯や場面を一つ書き留める。"
-    },
-    {
-      "id": "c21-zhuangzi-muyou",
-      "kind": "quote",
-      "text": "役に立たないように見えるものにこそ、大きな役目がある。",
-      "original": "無用の用",
-      "author": "荘子",
-      "field": "思想家",
-      "category": [
-        "self",
-        "rest"
-      ],
-      "source": "『荘子』人間世篇",
-      "sourceNote": "意訳",
-      "verification": "primary",
-      "rights": "public-domain",
-      "tone": [
-        "gentle"
-      ],
-      "mood": [
-        1,
-        5
-      ],
-      "concerns": [
-        "self",
-        "work"
-      ],
-      "tags": [
-        "reframe"
-      ],
-      "emotions": [
-        "nasakenai",
-        "munashii"
-      ],
-      "keywords": [
-        "役に立たない",
-        "無用の用",
-        "価値"
-      ],
-      "step": "何もしない時間を10分だけ、自分にゆるす。"
-    },
     {
       "id": "c21-zhuangzi-kocho",
       "kind": "quote",
@@ -593,85 +41,6 @@ export const CORPUS_V2_1 = {
         "こだわらない"
       ],
       "step": "今日の悩みを「10年後の自分」から眺めてみる。"
-    },
-    {
-      "id": "c21-mengzi-tenji",
-      "kind": "quote",
-      "text": "天の時は地の利にかなわない。地の利は、人の和にかなわない。",
-      "original": "天の時は地の利に如かず、地の利は人の和に如かず",
-      "author": "孟子",
-      "field": "思想家",
-      "category": [
-        "people",
-        "work"
-      ],
-      "source": "『孟子』公孫丑下",
-      "sourceNote": "意訳",
-      "verification": "primary",
-      "rights": "public-domain",
-      "tone": [
-        "steady"
-      ],
-      "mood": [
-        3,
-        5
-      ],
-      "concerns": [
-        "people",
-        "work"
-      ],
-      "tags": [
-        "rely"
-      ],
-      "emotions": [
-        "kinchou",
-        "mayoi"
-      ],
-      "keywords": [
-        "人の和",
-        "チーム",
-        "協力"
-      ],
-      "step": "一緒に働く人に、今日ひとこと声をかける。"
-    },
-    {
-      "id": "c21-mengzi-ninau",
-      "kind": "quote",
-      "text": "大きな役目を任される人は、まず心と体をきたえられる。",
-      "original": "天の将に大任を是の人に降さんとするや、必ず先ず其の心志を苦しめ",
-      "author": "孟子",
-      "field": "思想家",
-      "category": [
-        "hope",
-        "learn"
-      ],
-      "source": "『孟子』告子下",
-      "sourceNote": "意訳",
-      "verification": "primary",
-      "rights": "public-domain",
-      "tone": [
-        "steady"
-      ],
-      "mood": [
-        3,
-        5
-      ],
-      "concerns": [
-        "any"
-      ],
-      "tags": [
-        "reframe"
-      ],
-      "emotions": [
-        "kuyashii",
-        "oitsumerare"
-      ],
-      "keywords": [
-        "試練",
-        "鍛える",
-        "大任"
-      ],
-      "step": "今つらいことから、身についている力を一つ書き出す。"
     },
     {
       "id": "c21-saikontan-shiawase",
@@ -713,46 +82,6 @@ export const CORPUS_V2_1 = {
       "step": "今日やることを、一つだけ減らす。"
     },
     {
-      "id": "c21-saikontan-ippo",
-      "kind": "quote",
-      "text": "世の中を渡るには、一歩ゆずるくらいがちょうどいい。",
-      "original": "世を処するに一歩を譲るを高しと為す",
-      "author": "洪自誠",
-      "field": "思想家",
-      "category": [
-        "people",
-        "calm"
-      ],
-      "source": "『菜根譚』前集",
-      "sourceNote": "意訳",
-      "verification": "primary",
-      "rights": "public-domain",
-      "tone": [
-        "gentle",
-        "steady"
-      ],
-      "mood": [
-        2,
-        5
-      ],
-      "concerns": [
-        "people"
-      ],
-      "tags": [
-        "reframe"
-      ],
-      "emotions": [
-        "iraira",
-        "ikari"
-      ],
-      "keywords": [
-        "ゆずる",
-        "人間関係",
-        "一歩引く"
-      ],
-      "step": "ぶつかりそうな場面で、まず相手の話を一つ受けとめる。"
-    },
-    {
       "id": "c21-saikontan-awai",
       "kind": "quote",
       "text": "本当の味は、薄く淡いものだ。",
@@ -790,46 +119,6 @@ export const CORPUS_V2_1 = {
         "ふだん"
       ],
       "step": "いつものお茶やごはんを、ゆっくり味わってみる。"
-    },
-    {
-      "id": "c21-genshi-ichitou",
-      "kind": "quote",
-      "text": "一つの灯を下げて、暗い夜を行く。暗さを嘆かず、その灯だけを頼りにせよ。",
-      "original": "一燈を提げて暗夜を行く。暗夜を憂うること勿れ。只だ一燈を頼め",
-      "author": "佐藤一斎",
-      "field": "儒学者",
-      "category": [
-        "hope",
-        "step"
-      ],
-      "source": "『言志四録』言志晩録",
-      "sourceNote": "意訳",
-      "verification": "primary",
-      "rights": "public-domain",
-      "tone": [
-        "gentle",
-        "steady"
-      ],
-      "mood": [
-        1,
-        5
-      ],
-      "concerns": [
-        "any"
-      ],
-      "tags": [
-        "small"
-      ],
-      "emotions": [
-        "fuan",
-        "kanashii"
-      ],
-      "keywords": [
-        "灯",
-        "暗い",
-        "頼り"
-      ],
-      "step": "今いちばん支えになっているものを、一つ書いてみる。"
     },
     {
       "id": "c21-genshi-shounen",
@@ -949,122 +238,6 @@ export const CORPUS_V2_1 = {
       "step": "やる気を待たず、道具を手に取るところまでやる。"
     },
     {
-      "id": "c21-tsurezure-150",
-      "kind": "quote",
-      "text": "上手になってから人に見せようとする人は、なかなか上手にならない。",
-      "original": "能をつかんとする人、よくせざらんほどは、なまじひに人に知られじ",
-      "author": "吉田兼好",
-      "field": "随筆家",
-      "category": [
-        "learn",
-        "step"
-      ],
-      "source": "『徒然草』第百五十段",
-      "sourceNote": "意訳",
-      "verification": "primary",
-      "rights": "public-domain",
-      "tone": [
-        "steady"
-      ],
-      "mood": [
-        2,
-        5
-      ],
-      "concerns": [
-        "work",
-        "self"
-      ],
-      "tags": [
-        "learn"
-      ],
-      "emotions": [
-        "jishinnai",
-        "kinchou"
-      ],
-      "keywords": [
-        "下手",
-        "見せる",
-        "上達"
-      ],
-      "step": "途中のものを、信頼できる人に一つ見せる。"
-    },
-    {
-      "id": "c21-tsurezure-92",
-      "kind": "quote",
-      "text": "弓を習う人は、二本の矢を持つなと言われる。次があると思うと、一本目がおろそかになる。",
-      "original": "初心の人、二つの矢を持つ事なかれ",
-      "author": "吉田兼好",
-      "field": "随筆家",
-      "category": [
-        "today"
-      ],
-      "source": "『徒然草』第九十二段",
-      "sourceNote": "意訳",
-      "verification": "primary",
-      "rights": "public-domain",
-      "tone": [
-        "steady"
-      ],
-      "mood": [
-        3,
-        5
-      ],
-      "concerns": [
-        "work"
-      ],
-      "tags": [
-        "today"
-      ],
-      "emotions": [
-        "mayoi",
-        "taikutsu"
-      ],
-      "keywords": [
-        "今",
-        "集中",
-        "一回"
-      ],
-      "step": "今日の一つの作業を「これ一回」と思ってやる。"
-    },
-    {
-      "id": "c21-hojoki",
-      "kind": "quote",
-      "text": "流れる川はたえず、しかも同じ水ではない。",
-      "original": "ゆく河の流れは絶えずして、しかももとの水にあらず",
-      "author": "鴨長明",
-      "field": "随筆家",
-      "category": [
-        "calm"
-      ],
-      "source": "『方丈記』",
-      "sourceNote": "意訳",
-      "verification": "primary",
-      "rights": "public-domain",
-      "tone": [
-        "gentle"
-      ],
-      "mood": [
-        1,
-        5
-      ],
-      "concerns": [
-        "any"
-      ],
-      "tags": [
-        "reframe"
-      ],
-      "emotions": [
-        "kanashii",
-        "koukai"
-      ],
-      "keywords": [
-        "変わる",
-        "流れ",
-        "手放す"
-      ],
-      "step": "変えられないことを一つ書いて、「流れていくもの」と思ってみる。"
-    },
-    {
       "id": "c21-nanshu-hito",
       "kind": "quote",
       "text": "人を相手にせず、天を相手にせよ。人をとがめず、自分の誠が足りないところを探せ。",
@@ -1144,45 +317,6 @@ export const CORPUS_V2_1 = {
       "step": "「これをしている時は自分らしい」と思うことを一つ書く。"
     },
     {
-      "id": "c21-soseki-ushi",
-      "kind": "quote",
-      "text": "牛のように、根気よく押していくのです。",
-      "original": "牛になる事はどうしても必要です",
-      "author": "夏目漱石",
-      "field": "作家",
-      "category": [
-        "keep"
-      ],
-      "source": "夏目漱石 芥川龍之介・久米正雄あての手紙（1916年）",
-      "sourceNote": "手紙の意訳",
-      "verification": "primary",
-      "rights": "public-domain",
-      "tone": [
-        "steady"
-      ],
-      "mood": [
-        2,
-        5
-      ],
-      "concerns": [
-        "work",
-        "self"
-      ],
-      "tags": [
-        "small"
-      ],
-      "emotions": [
-        "aseri",
-        "motokashii"
-      ],
-      "keywords": [
-        "根気",
-        "あせらない",
-        "続ける"
-      ],
-      "step": "急がずに、今日も同じことを少しだけ続ける。"
-    },
-    {
       "id": "c21-shiki-heiki",
       "kind": "quote",
       "text": "どんな時でも、平気で生きていること。",
@@ -1223,122 +357,6 @@ export const CORPUS_V2_1 = {
       "step": "今日できる、いつもどおりのことを一つする。"
     },
     {
-      "id": "c21-seneca-mijikai",
-      "kind": "quote",
-      "text": "人生は短いのではない。私たちが、むだにしているのだ。",
-      "original": "Non accepimus brevem vitam sed fecimus",
-      "author": "セネカ",
-      "field": "哲学者",
-      "category": [
-        "today"
-      ],
-      "source": "セネカ『人生の短さについて』",
-      "sourceNote": "意訳",
-      "verification": "primary",
-      "rights": "public-domain",
-      "tone": [
-        "steady"
-      ],
-      "mood": [
-        3,
-        5
-      ],
-      "concerns": [
-        "any"
-      ],
-      "tags": [
-        "today"
-      ],
-      "emotions": [
-        "taikutsu",
-        "bonyari"
-      ],
-      "keywords": [
-        "時間",
-        "今日",
-        "むだ"
-      ],
-      "step": "今日いちばん大事にしたい30分を、先に決めておく。"
-    },
-    {
-      "id": "c21-epiktetos-shidai",
-      "kind": "quote",
-      "text": "自分の力でどうにかなることと、ならないことを分けよう。",
-      "original": "τῶν ὄντων τὰ μέν ἐστιν ἐφ' ἡμῖν",
-      "author": "エピクテトス",
-      "field": "哲学者",
-      "category": [
-        "calm"
-      ],
-      "source": "エピクテトス『提要（エンケイリディオン）』1",
-      "sourceNote": "意訳",
-      "verification": "primary",
-      "rights": "public-domain",
-      "tone": [
-        "gentle",
-        "steady"
-      ],
-      "mood": [
-        1,
-        5
-      ],
-      "concerns": [
-        "any"
-      ],
-      "tags": [
-        "reframe"
-      ],
-      "emotions": [
-        "fuan",
-        "oitsumerare"
-      ],
-      "keywords": [
-        "変えられること",
-        "手放す",
-        "分ける"
-      ],
-      "step": "悩みを「自分で変えられる」「変えられない」に分けて書く。"
-    },
-    {
-      "id": "c21-epiktetos-kangae",
-      "kind": "quote",
-      "text": "人を苦しめるのは出来事そのものではなく、出来事についての考え方だ。",
-      "original": "Ταράσσει τοὺς ἀνθρώπους οὐ τὰ πράγματα",
-      "author": "エピクテトス",
-      "field": "哲学者",
-      "category": [
-        "calm",
-        "learn"
-      ],
-      "source": "エピクテトス『提要（エンケイリディオン）』5",
-      "sourceNote": "意訳",
-      "verification": "primary",
-      "rights": "public-domain",
-      "tone": [
-        "steady"
-      ],
-      "mood": [
-        2,
-        5
-      ],
-      "concerns": [
-        "any"
-      ],
-      "tags": [
-        "reframe"
-      ],
-      "emotions": [
-        "moyamoya",
-        "iraira"
-      ],
-      "keywords": [
-        "考え方",
-        "受けとめ方",
-        "出来事"
-      ],
-      "step": "つらい出来事を、別の見方で一行言い直してみる。"
-    },
-    {
       "id": "c21-aurelius-ima",
       "kind": "quote",
       "text": "失うのは、いつも「今」だけだ。",
@@ -1376,82 +394,6 @@ export const CORPUS_V2_1 = {
         "過去と未来"
       ],
       "step": "過去と未来のことを置いて、今やっていることだけに5分集中する。"
-    },
-    {
-      "id": "c21-aurelius-asa",
-      "kind": "quote",
-      "text": "朝、起きるのがつらい時は思い出そう。人として働くために起きるのだと。",
-      "original": "ὄρθρου ὅταν δυσόκνως ἐξεγείρῃ",
-      "author": "マルクス・アウレリウス",
-      "field": "哲学者・皇帝",
-      "category": [
-        "step",
-        "today"
-      ],
-      "source": "マルクス・アウレリウス『自省録』第5巻1",
-      "sourceNote": "意訳",
-      "verification": "primary",
-      "rights": "public-domain",
-      "tone": [
-        "steady"
-      ],
-      "mood": [
-        2,
-        5
-      ],
-      "concerns": [
-        "work"
-      ],
-      "tags": [
-        "small"
-      ],
-      "emotions": [
-        "muki",
-        "tsukare"
-      ],
-      "keywords": [
-        "朝",
-        "起きる",
-        "はじめる"
-      ],
-      "step": "起きたら、まず窓をあけて一つ深呼吸する。"
-    },
-    {
-      "id": "c21-aurelius-shimpai",
-      "kind": "quote",
-      "text": "思いわずらうのは、実際に起きた時でいい。",
-      "author": "マルクス・アウレリウス",
-      "field": "哲学者・皇帝",
-      "category": [
-        "calm"
-      ],
-      "source": "マルクス・アウレリウス『自省録』第7巻8の趣旨",
-      "sourceNote": "趣旨の意訳",
-      "verification": "attributed",
-      "rights": "public-domain",
-      "tone": [
-        "gentle"
-      ],
-      "mood": [
-        1,
-        5
-      ],
-      "concerns": [
-        "any"
-      ],
-      "tags": [
-        "reframe"
-      ],
-      "emotions": [
-        "fuan",
-        "kinchou"
-      ],
-      "keywords": [
-        "心配",
-        "まだ起きていない",
-        "今"
-      ],
-      "step": "まだ起きていない心配を一つ、紙に書いて閉じておく。"
     },
     {
       "id": "c21-franklin-junbi",
@@ -1528,84 +470,6 @@ export const CORPUS_V2_1 = {
         "今日"
       ],
       "step": "なんとなく使っている時間を、一つだけやめてみる。"
-    },
-    {
-      "id": "c21-emerson-shinrai",
-      "kind": "quote",
-      "text": "自分を信じること。それが、うまくいくための一番の秘密だ。",
-      "original": "Self-trust is the first secret of success",
-      "author": "ラルフ・ワルド・エマソン",
-      "field": "思想家",
-      "category": [
-        "self"
-      ],
-      "source": "エマソン『社会と孤独』",
-      "sourceNote": "意訳",
-      "verification": "primary",
-      "rights": "public-domain",
-      "tone": [
-        "gentle",
-        "steady"
-      ],
-      "mood": [
-        2,
-        5
-      ],
-      "concerns": [
-        "self"
-      ],
-      "tags": [
-        "self"
-      ],
-      "emotions": [
-        "jishinnai",
-        "nasakenai"
-      ],
-      "keywords": [
-        "自分を信じる",
-        "自信"
-      ],
-      "step": "今日うまくできたことを、小さくても一つ書く。"
-    },
-    {
-      "id": "c21-emerson-hibi",
-      "kind": "quote",
-      "text": "一日一日を、一年でいちばんよい日だと心に書いておこう。",
-      "original": "Write it on your heart that every day is the best day in the year",
-      "author": "ラルフ・ワルド・エマソン",
-      "field": "思想家",
-      "category": [
-        "today",
-        "hope"
-      ],
-      "source": "エマソンの言葉とされる",
-      "sourceNote": "出典未確認（伝承）",
-      "verification": "attributed",
-      "rights": "public-domain",
-      "tone": [
-        "gentle",
-        "steady"
-      ],
-      "mood": [
-        2,
-        5
-      ],
-      "concerns": [
-        "any"
-      ],
-      "tags": [
-        "today"
-      ],
-      "emotions": [
-        "munashii",
-        "kibou"
-      ],
-      "keywords": [
-        "今日",
-        "いい日",
-        "一日"
-      ],
-      "step": "今日のよかったことを、寝る前に一つ書く。"
     },
     {
       "id": "c21-thoreau-hibiki",
@@ -1687,163 +551,6 @@ export const CORPUS_V2_1 = {
       "step": "机の上か、やることリストを一つだけ減らす。"
     },
     {
-      "id": "c21-shakespeare-yoshiashi",
-      "kind": "quote",
-      "text": "ものごとに良いも悪いもない。考え方がそう決めるのだ。",
-      "original": "There is nothing either good or bad but thinking makes it so",
-      "author": "シェイクスピア",
-      "field": "劇作家",
-      "category": [
-        "calm",
-        "learn"
-      ],
-      "source": "シェイクスピア『ハムレット』第2幕第2場",
-      "sourceNote": "意訳",
-      "verification": "primary",
-      "rights": "public-domain",
-      "tone": [
-        "steady"
-      ],
-      "mood": [
-        2,
-        5
-      ],
-      "concerns": [
-        "any"
-      ],
-      "tags": [
-        "reframe"
-      ],
-      "emotions": [
-        "moyamoya",
-        "ochikomi"
-      ],
-      "keywords": [
-        "考え方",
-        "良い悪い",
-        "見方"
-      ],
-      "step": "今日の嫌なことを、別の言葉で言い直してみる。"
-    },
-    {
-      "id": "c21-bible-asu",
-      "kind": "quote",
-      "text": "明日のことは明日が思いわずらう。一日の苦労は、その日一日で十分だ。",
-      "original": "明日のことを思いわずらうな",
-      "author": "聖書",
-      "field": "聖書",
-      "category": [
-        "today",
-        "calm"
-      ],
-      "source": "『マタイによる福音書』6章34節",
-      "sourceNote": "意訳",
-      "verification": "primary",
-      "rights": "public-domain",
-      "tone": [
-        "gentle"
-      ],
-      "mood": [
-        1,
-        5
-      ],
-      "concerns": [
-        "any"
-      ],
-      "tags": [
-        "today"
-      ],
-      "emotions": [
-        "fuan",
-        "aseri"
-      ],
-      "keywords": [
-        "明日",
-        "今日",
-        "心配"
-      ],
-      "step": "明日の心配は、明日の自分にまかせる。今日の分だけやる。"
-    },
-    {
-      "id": "c21-bible-tataku",
-      "kind": "quote",
-      "text": "たたきなさい。そうすれば、ひらかれる。",
-      "original": "門をたたけ、さらば開かれん",
-      "author": "聖書",
-      "field": "聖書",
-      "category": [
-        "step",
-        "hope"
-      ],
-      "source": "『マタイによる福音書』7章7節",
-      "sourceNote": "意訳",
-      "verification": "primary",
-      "rights": "public-domain",
-      "tone": [
-        "gentle",
-        "steady"
-      ],
-      "mood": [
-        2,
-        5
-      ],
-      "concerns": [
-        "any"
-      ],
-      "tags": [
-        "rely"
-      ],
-      "emotions": [
-        "mayoi",
-        "jishinnai"
-      ],
-      "keywords": [
-        "たずねる",
-        "頼む",
-        "ひらく"
-      ],
-      "step": "聞きたかったことを、一人にだけ聞いてみる。"
-    },
-    {
-      "id": "c21-bible-toki",
-      "kind": "quote",
-      "text": "すべてのことには、それぞれの時がある。",
-      "original": "天が下のすべての事には季節があり",
-      "author": "聖書",
-      "field": "聖書",
-      "category": [
-        "calm",
-        "rest"
-      ],
-      "source": "『伝道の書（コヘレトの言葉）』3章1節",
-      "sourceNote": "意訳",
-      "verification": "primary",
-      "rights": "public-domain",
-      "tone": [
-        "gentle"
-      ],
-      "mood": [
-        1,
-        5
-      ],
-      "concerns": [
-        "any"
-      ],
-      "tags": [
-        "rest"
-      ],
-      "emotions": [
-        "aseri",
-        "okiteikareta"
-      ],
-      "keywords": [
-        "時",
-        "季節",
-        "焦らない"
-      ],
-      "step": "今は「休む季節」かもしれないと考えて、早めに寝る。"
-    },
-    {
       "id": "c21-hokkukyo-kokoro",
       "kind": "quote",
       "text": "ものごとは、心から始まる。",
@@ -1882,124 +589,6 @@ export const CORPUS_V2_1 = {
         "気持ち"
       ],
       "step": "今の気持ちに名前をつけて、ノートに一行書く。"
-    },
-    {
-      "id": "c21-hokkukyo-urami",
-      "kind": "quote",
-      "text": "うらみは、うらみでは消えない。うらみを手放すことで消える。",
-      "original": "怨みは怨みによって息むことなし",
-      "author": "法句経",
-      "field": "仏典",
-      "category": [
-        "people",
-        "calm"
-      ],
-      "source": "『法句経（ダンマパダ）』第5偈",
-      "sourceNote": "意訳",
-      "verification": "primary",
-      "rights": "public-domain",
-      "tone": [
-        "gentle"
-      ],
-      "mood": [
-        2,
-        5
-      ],
-      "concerns": [
-        "people"
-      ],
-      "tags": [
-        "reframe"
-      ],
-      "emotions": [
-        "ikari",
-        "kuyashii"
-      ],
-      "keywords": [
-        "うらみ",
-        "手放す",
-        "ゆるす"
-      ],
-      "step": "許せないことを紙に書いて、今日はそっと閉じておく。"
-    },
-    {
-      "id": "c21-hokkukyo-jiko",
-      "kind": "quote",
-      "text": "自分こそ、自分のよりどころ。",
-      "original": "己こそ己の寄る辺",
-      "author": "法句経",
-      "field": "仏典",
-      "category": [
-        "self"
-      ],
-      "source": "『法句経（ダンマパダ）』第160偈",
-      "sourceNote": "意訳",
-      "verification": "primary",
-      "rights": "public-domain",
-      "tone": [
-        "gentle",
-        "steady"
-      ],
-      "mood": [
-        1,
-        5
-      ],
-      "concerns": [
-        "self"
-      ],
-      "tags": [
-        "self"
-      ],
-      "emotions": [
-        "sabishii",
-        "jishinnai"
-      ],
-      "keywords": [
-        "自分",
-        "よりどころ",
-        "支え"
-      ],
-      "step": "自分にやさしい言葉を、一つかけてみる。"
-    },
-    {
-      "id": "c21-rochefoucauld-kanpeki",
-      "kind": "quote",
-      "text": "完璧に見える人も、ただ自分の欠点を上手に隠しているだけだ。",
-      "author": "ラ・ロシュフコー",
-      "field": "モラリスト",
-      "category": [
-        "self",
-        "calm"
-      ],
-      "source": "ラ・ロシュフコー『箴言集』の趣旨",
-      "sourceNote": "趣旨の意訳",
-      "verification": "attributed",
-      "rights": "public-domain",
-      "tone": [
-        "gentle",
-        "steady"
-      ],
-      "mood": [
-        1,
-        5
-      ],
-      "concerns": [
-        "self",
-        "people"
-      ],
-      "tags": [
-        "compare"
-      ],
-      "emotions": [
-        "shitto",
-        "jishinnai"
-      ],
-      "keywords": [
-        "完璧",
-        "比べない",
-        "欠点"
-      ],
-      "step": "すごく見える人と比べたら、「見えていない苦労もある」と思い出す。"
     },
     {
       "id": "c21-kierkegaard-ushiro",
@@ -2121,84 +710,6 @@ export const CORPUS_V2_1 = {
       "step": "6割の出来で一度だれかに見せる。"
     },
     {
-      "id": "c21-sonshi-shiru",
-      "kind": "quote",
-      "text": "相手を知り、自分を知れば、何度やっても危なくない。",
-      "original": "彼を知り己を知れば百戦殆うからず",
-      "author": "孫子",
-      "field": "兵法家",
-      "category": [
-        "prepare"
-      ],
-      "source": "『孫子』謀攻篇",
-      "sourceNote": "意訳",
-      "verification": "primary",
-      "rights": "public-domain",
-      "tone": [
-        "steady"
-      ],
-      "mood": [
-        3,
-        5
-      ],
-      "concerns": [
-        "work",
-        "people"
-      ],
-      "tags": [
-        "prepare"
-      ],
-      "emotions": [
-        "kinchou",
-        "fuan"
-      ],
-      "keywords": [
-        "準備",
-        "自分を知る",
-        "相手を知る"
-      ],
-      "step": "明日の相手や場面について、知っていることを3つ書き出す。"
-    },
-    {
-      "id": "c21-smiles-tasuke",
-      "kind": "quote",
-      "text": "天は、自分で自分を助ける人を助ける。",
-      "original": "Heaven helps those who help themselves",
-      "author": "サミュエル・スマイルズ",
-      "field": "作家",
-      "category": [
-        "step",
-        "hope"
-      ],
-      "source": "スマイルズ『自助論』（中村正直訳『西国立志編』）",
-      "sourceNote": "意訳",
-      "verification": "primary",
-      "rights": "public-domain",
-      "tone": [
-        "steady"
-      ],
-      "mood": [
-        3,
-        5
-      ],
-      "concerns": [
-        "any"
-      ],
-      "tags": [
-        "small"
-      ],
-      "emotions": [
-        "chousen",
-        "yaruki"
-      ],
-      "keywords": [
-        "自助",
-        "自分から",
-        "一歩"
-      ],
-      "step": "今日、自分のためにできる小さなことを一つやる。"
-    },
-    {
       "id": "c21-goethe-ima",
       "kind": "quote",
       "text": "今この時をつかまえなさい。できること、夢見ることは、まず始めてみることだ。",
@@ -2235,45 +746,6 @@ export const CORPUS_V2_1 = {
         "夢"
       ],
       "step": "やってみたかったことを、今日10分だけ始める。"
-    },
-    {
-      "id": "c21-goethe-isogazu",
-      "kind": "quote",
-      "text": "急がず、休まず。",
-      "original": "Ohne Hast aber ohne Rast",
-      "author": "ゲーテ",
-      "field": "作家",
-      "category": [
-        "keep"
-      ],
-      "source": "ゲーテの言葉とされる",
-      "sourceNote": "出典未確認（伝承）",
-      "verification": "attributed",
-      "rights": "public-domain",
-      "tone": [
-        "gentle",
-        "steady"
-      ],
-      "mood": [
-        2,
-        5
-      ],
-      "concerns": [
-        "any"
-      ],
-      "tags": [
-        "small"
-      ],
-      "emotions": [
-        "aseri",
-        "tsukare"
-      ],
-      "keywords": [
-        "急がない",
-        "続ける",
-        "ペース"
-      ],
-      "step": "今日は「急がず、でも止まらず」少しだけ進める。"
     },
     {
       "id": "c21-pascal-heya",
@@ -2429,122 +901,6 @@ export const CORPUS_V2_1 = {
       "step": "うまくいかなかったやり方を「わかったこと」として一つ書く。"
     },
     {
-      "id": "c21-nightingale-ichinichi",
-      "kind": "quote",
-      "text": "一日一日、少しずつ。それが、いちばん確かな進み方です。",
-      "author": "フローレンス・ナイチンゲール",
-      "field": "看護師",
-      "category": [
-        "keep",
-        "today"
-      ],
-      "source": "ナイチンゲールの手紙の趣旨",
-      "sourceNote": "趣旨の意訳",
-      "verification": "attributed",
-      "rights": "public-domain",
-      "tone": [
-        "gentle"
-      ],
-      "mood": [
-        1,
-        5
-      ],
-      "concerns": [
-        "health",
-        "any"
-      ],
-      "tags": [
-        "small"
-      ],
-      "emotions": [
-        "tsukare",
-        "aseri"
-      ],
-      "keywords": [
-        "少しずつ",
-        "毎日",
-        "続ける"
-      ],
-      "step": "今日の「少し」を一つだけやって、それでよしとする。"
-    },
-    {
-      "id": "c21-ninomiya-sekishou",
-      "kind": "quote",
-      "text": "小さなことを積み重ねて、はじめて大きなことになる。",
-      "original": "積小為大",
-      "author": "二宮尊徳",
-      "field": "農政家",
-      "category": [
-        "keep",
-        "step"
-      ],
-      "source": "『二宮翁夜話』",
-      "sourceNote": "意訳",
-      "verification": "primary",
-      "rights": "public-domain",
-      "tone": [
-        "gentle",
-        "steady"
-      ],
-      "mood": [
-        2,
-        5
-      ],
-      "concerns": [
-        "any"
-      ],
-      "tags": [
-        "small"
-      ],
-      "emotions": [
-        "motokashii",
-        "muki"
-      ],
-      "keywords": [
-        "積小為大",
-        "小さく",
-        "積み重ね"
-      ],
-      "step": "今日の小さな一歩を、カレンダーに印をつけて残す。"
-    },
-    {
-      "id": "c21-yoshida-shisei",
-      "kind": "quote",
-      "text": "心が動いたら、それがはじまりの時。",
-      "author": "吉田松陰",
-      "field": "思想家",
-      "category": [
-        "step"
-      ],
-      "source": "吉田松陰の言葉の趣旨",
-      "sourceNote": "趣旨の意訳",
-      "verification": "attributed",
-      "rights": "public-domain",
-      "tone": [
-        "steady"
-      ],
-      "mood": [
-        3,
-        5
-      ],
-      "concerns": [
-        "any"
-      ],
-      "tags": [
-        "small"
-      ],
-      "emotions": [
-        "chousen",
-        "wakuwaku"
-      ],
-      "keywords": [
-        "はじまり",
-        "心が動く",
-        "一歩"
-      ],
-      "step": "気になっていることを、今日メモに一つ書きとめる。"
-    },
-    {
       "id": "c21-basho-fueki",
       "kind": "quote",
       "text": "変わらないものと、変わっていくもの。その両方が大事だ。",
@@ -2583,44 +939,6 @@ export const CORPUS_V2_1 = {
         "大事なもの"
       ],
       "step": "自分にとって変えたくないものと、変えてもいいものを一つずつ書く。"
-    },
-    {
-      "id": "c21-ryokan-sainan",
-      "kind": "quote",
-      "text": "災難にあう時は、あうのがよい。",
-      "original": "災難に逢う時節には災難に逢うがよく候",
-      "author": "良寛",
-      "field": "僧侶・歌人",
-      "category": [
-        "calm"
-      ],
-      "source": "良寛の手紙（1828年）",
-      "sourceNote": "意訳",
-      "verification": "primary",
-      "rights": "public-domain",
-      "tone": [
-        "gentle"
-      ],
-      "mood": [
-        2,
-        5
-      ],
-      "concerns": [
-        "any"
-      ],
-      "tags": [
-        "reframe"
-      ],
-      "emotions": [
-        "kanashii",
-        "koukai"
-      ],
-      "keywords": [
-        "受け入れる",
-        "災難",
-        "しかたない"
-      ],
-      "step": "どうにもならないことを一つ、「今はそういう時」と書いてみる。"
     },
     {
       "id": "c21-issa-yasegaeru",
@@ -4830,6 +3148,1832 @@ export const CORPUS_V2_1 = {
       "step": "今日の自分に「よくやった」と言う。"
     },
     {
+      "id": "o21-x001",
+      "kind": "original",
+      "text": "考えるだけの一時間より、手を動かす十分。",
+      "author": "落ちません。編集部",
+      "category": [
+        "step"
+      ],
+      "source": "落ちません。編集部",
+      "verification": "primary",
+      "rights": "original",
+      "tone": [
+        "steady"
+      ],
+      "mood": [
+        2,
+        5
+      ],
+      "concerns": [
+        "any"
+      ],
+      "tags": [
+        "small"
+      ],
+      "emotions": [
+        "mayoi",
+        "motokashii"
+      ],
+      "keywords": [
+        "手を動かす",
+        "十分",
+        "考えすぎ"
+      ],
+      "step": "10分だけタイマーをかけて、手を動かす。"
+    },
+    {
+      "id": "o21-x002",
+      "kind": "original",
+      "text": "作ったものは、出した時に初めて育ち始める。",
+      "author": "落ちません。編集部",
+      "category": [
+        "step",
+        "work"
+      ],
+      "source": "落ちません。編集部",
+      "verification": "primary",
+      "rights": "original",
+      "tone": [
+        "steady",
+        "push"
+      ],
+      "mood": [
+        3,
+        5
+      ],
+      "concerns": [
+        "work",
+        "self"
+      ],
+      "tags": [
+        "small"
+      ],
+      "emotions": [
+        "kinchou",
+        "chousen"
+      ],
+      "keywords": [
+        "出す",
+        "作る",
+        "育つ"
+      ],
+      "step": "作りかけのものを、一人に見せる。"
+    },
+    {
+      "id": "o21-x003",
+      "kind": "original",
+      "text": "学んだら、その日のうちに一つ使ってみよう。",
+      "author": "落ちません。編集部",
+      "category": [
+        "learn"
+      ],
+      "source": "落ちません。編集部",
+      "verification": "primary",
+      "rights": "original",
+      "tone": [
+        "steady"
+      ],
+      "mood": [
+        2,
+        5
+      ],
+      "concerns": [
+        "any"
+      ],
+      "tags": [
+        "learn"
+      ],
+      "emotions": [
+        "taikutsu",
+        "yaruki"
+      ],
+      "keywords": [
+        "学ぶ",
+        "使う",
+        "今日のうちに"
+      ],
+      "step": "今日知ったことを、一つ試してみる。"
+    },
+    {
+      "id": "o21-x004",
+      "kind": "original",
+      "text": "聞いて満足した日は、まだ半分。やってみて、やっと一日分。",
+      "author": "落ちません。編集部",
+      "category": [
+        "learn",
+        "step"
+      ],
+      "source": "落ちません。編集部",
+      "verification": "primary",
+      "rights": "original",
+      "tone": [
+        "steady",
+        "push"
+      ],
+      "mood": [
+        3,
+        5
+      ],
+      "concerns": [
+        "work",
+        "self"
+      ],
+      "tags": [
+        "small"
+      ],
+      "emotions": [
+        "yaruki",
+        "chousen"
+      ],
+      "keywords": [
+        "聞くだけ",
+        "やってみる",
+        "実践"
+      ],
+      "step": "今日聞いた話から、一つだけ実際にやってみる。"
+    },
+    {
+      "id": "o21-x005",
+      "kind": "original",
+      "text": "完成を待たずに、途中を見せる勇気を。",
+      "author": "落ちません。編集部",
+      "category": [
+        "step"
+      ],
+      "source": "落ちません。編集部",
+      "verification": "primary",
+      "rights": "original",
+      "tone": [
+        "steady"
+      ],
+      "mood": [
+        2,
+        5
+      ],
+      "concerns": [
+        "work"
+      ],
+      "tags": [
+        "small"
+      ],
+      "emotions": [
+        "kinchou",
+        "jishinnai"
+      ],
+      "keywords": [
+        "途中",
+        "見せる",
+        "勇気"
+      ],
+      "step": "途中のものを、信頼できる人に見せる。"
+    },
+    {
+      "id": "o21-x006",
+      "kind": "original",
+      "text": "今日やることは、三つまで。四つ目は明日の仕事。",
+      "author": "落ちません。編集部",
+      "category": [
+        "today",
+        "prepare"
+      ],
+      "source": "落ちません。編集部",
+      "verification": "primary",
+      "rights": "original",
+      "tone": [
+        "gentle",
+        "steady"
+      ],
+      "mood": [
+        1,
+        5
+      ],
+      "concerns": [
+        "work",
+        "any"
+      ],
+      "tags": [
+        "today"
+      ],
+      "emotions": [
+        "oitsumerare",
+        "aseri"
+      ],
+      "keywords": [
+        "三つまで",
+        "今日やること",
+        "区切る"
+      ],
+      "step": "今日やることを三つだけ書く。"
+    },
+    {
+      "id": "o21-x007",
+      "kind": "original",
+      "text": "疲れた時ほど、いちばん簡単なことから片づけよう。",
+      "author": "落ちません。編集部",
+      "category": [
+        "rest",
+        "step"
+      ],
+      "source": "落ちません。編集部",
+      "verification": "primary",
+      "rights": "original",
+      "tone": [
+        "gentle",
+        "steady"
+      ],
+      "mood": [
+        1,
+        4
+      ],
+      "concerns": [
+        "work",
+        "any"
+      ],
+      "tags": [
+        "small"
+      ],
+      "emotions": [
+        "tsukare",
+        "muki"
+      ],
+      "keywords": [
+        "疲れた時",
+        "簡単なこと",
+        "片づける"
+      ],
+      "step": "いちばん簡単な作業を、一つだけ終わらせる。"
+    },
+    {
+      "id": "o21-x008",
+      "kind": "original",
+      "text": "一日の終わりに、明日の最初の一手だけ決めておく。",
+      "author": "落ちません。編集部",
+      "category": [
+        "today",
+        "prepare"
+      ],
+      "source": "落ちません。編集部",
+      "verification": "primary",
+      "rights": "original",
+      "tone": [
+        "gentle",
+        "steady"
+      ],
+      "mood": [
+        1,
+        5
+      ],
+      "concerns": [
+        "any"
+      ],
+      "tags": [
+        "prepare"
+      ],
+      "emotions": [
+        "fuan",
+        "aseri"
+      ],
+      "keywords": [
+        "明日の一手",
+        "区切る",
+        "準備"
+      ],
+      "step": "明日の朝いちばんにやることを、一行メモする。"
+    },
+    {
+      "id": "o21-x009",
+      "kind": "original",
+      "text": "ゴールの時刻を決めると、一日に締まりが出る。",
+      "author": "落ちません。編集部",
+      "category": [
+        "today",
+        "prepare"
+      ],
+      "source": "落ちません。編集部",
+      "verification": "primary",
+      "rights": "original",
+      "tone": [
+        "steady"
+      ],
+      "mood": [
+        2,
+        5
+      ],
+      "concerns": [
+        "work",
+        "any"
+      ],
+      "tags": [
+        "today"
+      ],
+      "emotions": [
+        "bonyari",
+        "taikutsu"
+      ],
+      "keywords": [
+        "終わりの時刻",
+        "締まり",
+        "一日"
+      ],
+      "step": "今日の作業の終わりの時刻を決めて、時計に合わせる。"
+    },
+    {
+      "id": "o21-x010",
+      "kind": "original",
+      "text": "やり方がわからない時は、うまくいっている人のやり方を一つまねる。",
+      "author": "落ちません。編集部",
+      "category": [
+        "learn"
+      ],
+      "source": "落ちません。編集部",
+      "verification": "primary",
+      "rights": "original",
+      "tone": [
+        "steady"
+      ],
+      "mood": [
+        2,
+        5
+      ],
+      "concerns": [
+        "work",
+        "any"
+      ],
+      "tags": [
+        "learn"
+      ],
+      "emotions": [
+        "mayoi",
+        "jishinnai"
+      ],
+      "keywords": [
+        "まねる",
+        "やり方",
+        "学ぶ"
+      ],
+      "step": "うまくいっている人のやり方を、一つだけ試す。"
+    },
+    {
+      "id": "o21-x011",
+      "kind": "original",
+      "text": "失敗の記録は、責めるためじゃなく、次に使うためにつける。",
+      "author": "落ちません。編集部",
+      "category": [
+        "learn"
+      ],
+      "source": "落ちません。編集部",
+      "verification": "primary",
+      "rights": "original",
+      "tone": [
+        "gentle",
+        "steady"
+      ],
+      "mood": [
+        1,
+        5
+      ],
+      "concerns": [
+        "any"
+      ],
+      "tags": [
+        "learn"
+      ],
+      "emotions": [
+        "koukai",
+        "zaiakukan"
+      ],
+      "keywords": [
+        "失敗の記録",
+        "次に使う",
+        "責めない"
+      ],
+      "step": "今日の失敗を、事実だけ一行書く。"
+    },
+    {
+      "id": "o21-x012",
+      "kind": "original",
+      "text": "うまくいかない時は、手順を書き出すと、どこで止まっているかが見える。",
+      "author": "落ちません。編集部",
+      "category": [
+        "learn",
+        "prepare"
+      ],
+      "source": "落ちません。編集部",
+      "verification": "primary",
+      "rights": "original",
+      "tone": [
+        "steady"
+      ],
+      "mood": [
+        2,
+        5
+      ],
+      "concerns": [
+        "work",
+        "any"
+      ],
+      "tags": [
+        "prepare"
+      ],
+      "emotions": [
+        "motokashii",
+        "mayoi"
+      ],
+      "keywords": [
+        "手順",
+        "書き出す",
+        "止まっている所"
+      ],
+      "step": "止まっている作業の手順を、順番に書き出す。"
+    },
+    {
+      "id": "o21-x013",
+      "kind": "original",
+      "text": "先のばしにしていることは、最初の一分がいちばん重い。",
+      "author": "落ちません。編集部",
+      "category": [
+        "step"
+      ],
+      "source": "落ちません。編集部",
+      "verification": "primary",
+      "rights": "original",
+      "tone": [
+        "gentle",
+        "steady"
+      ],
+      "mood": [
+        2,
+        5
+      ],
+      "concerns": [
+        "any"
+      ],
+      "tags": [
+        "small"
+      ],
+      "emotions": [
+        "muki",
+        "motokashii"
+      ],
+      "keywords": [
+        "先のばし",
+        "最初の一分",
+        "始める"
+      ],
+      "step": "先のばしにしていることを、1分だけやる。"
+    },
+    {
+      "id": "o21-x014",
+      "kind": "original",
+      "text": "気が進まない時は、「準備だけ」と決めて始めよう。",
+      "author": "落ちません。編集部",
+      "category": [
+        "step"
+      ],
+      "source": "落ちません。編集部",
+      "verification": "primary",
+      "rights": "original",
+      "tone": [
+        "gentle",
+        "steady"
+      ],
+      "mood": [
+        1,
+        5
+      ],
+      "concerns": [
+        "any"
+      ],
+      "tags": [
+        "small"
+      ],
+      "emotions": [
+        "muki",
+        "bonyari"
+      ],
+      "keywords": [
+        "準備だけ",
+        "始める",
+        "気が進まない"
+      ],
+      "step": "道具を出すところまでやって、今日はそれで良しとする。"
+    },
+    {
+      "id": "o21-x015",
+      "kind": "original",
+      "text": "不安な時は、一番悪い場合と、その時の手を書いておく。それだけで足が動く。",
+      "author": "落ちません。編集部",
+      "category": [
+        "calm",
+        "prepare"
+      ],
+      "source": "落ちません。編集部",
+      "verification": "primary",
+      "rights": "original",
+      "tone": [
+        "gentle",
+        "steady"
+      ],
+      "mood": [
+        1,
+        5
+      ],
+      "concerns": [
+        "any"
+      ],
+      "tags": [
+        "prepare"
+      ],
+      "emotions": [
+        "fuan",
+        "kinchou"
+      ],
+      "keywords": [
+        "一番悪い場合",
+        "手を打つ",
+        "備え"
+      ],
+      "step": "一番悪い場合と、その時にできることを一つずつ書く。"
+    },
+    {
+      "id": "o21-x016",
+      "kind": "original",
+      "text": "人に頼む時は、「何をしてほしいか」を一行で言えるようにしておこう。",
+      "author": "落ちません。編集部",
+      "category": [
+        "people",
+        "work"
+      ],
+      "source": "落ちません。編集部",
+      "verification": "primary",
+      "rights": "original",
+      "tone": [
+        "steady"
+      ],
+      "mood": [
+        2,
+        5
+      ],
+      "concerns": [
+        "people",
+        "work"
+      ],
+      "tags": [
+        "rely"
+      ],
+      "emotions": [
+        "mayoi",
+        "kinchou"
+      ],
+      "keywords": [
+        "頼み方",
+        "一行",
+        "伝える"
+      ],
+      "step": "頼みたいことを、一行で書いてみる。"
+    },
+    {
+      "id": "o21-x017",
+      "kind": "original",
+      "text": "疲れが続く時は、根性より先に、睡眠と食事から立て直そう。",
+      "author": "落ちません。編集部",
+      "category": [
+        "rest"
+      ],
+      "source": "落ちません。編集部",
+      "verification": "primary",
+      "rights": "original",
+      "tone": [
+        "gentle",
+        "steady"
+      ],
+      "mood": [
+        1,
+        4
+      ],
+      "concerns": [
+        "health"
+      ],
+      "tags": [
+        "rest"
+      ],
+      "emotions": [
+        "tsukare",
+        "muki"
+      ],
+      "keywords": [
+        "睡眠",
+        "食事",
+        "立て直す"
+      ],
+      "step": "今夜の寝る時間を、先に決めておく。"
+    },
+    {
+      "id": "o21-x018",
+      "kind": "original",
+      "text": "調子が悪い日が何日も続くなら、それは休むか相談するサイン。",
+      "author": "落ちません。編集部",
+      "category": [
+        "rest",
+        "people"
+      ],
+      "source": "落ちません。編集部",
+      "verification": "primary",
+      "rights": "original",
+      "tone": [
+        "gentle"
+      ],
+      "mood": [
+        1,
+        3
+      ],
+      "concerns": [
+        "health",
+        "self"
+      ],
+      "tags": [
+        "rely"
+      ],
+      "emotions": [
+        "ochikomi",
+        "tsukare"
+      ],
+      "keywords": [
+        "続く不調",
+        "相談",
+        "サイン"
+      ],
+      "step": "話せる人か相談窓口を、一つメモしておく。"
+    },
+    {
+      "id": "o21-x019",
+      "kind": "original",
+      "text": "誰かに話すことは、弱さを見せることじゃない。状況を共有することだ。",
+      "author": "落ちません。編集部",
+      "category": [
+        "people"
+      ],
+      "source": "落ちません。編集部",
+      "verification": "primary",
+      "rights": "original",
+      "tone": [
+        "gentle",
+        "steady"
+      ],
+      "mood": [
+        1,
+        5
+      ],
+      "concerns": [
+        "people",
+        "work"
+      ],
+      "tags": [
+        "rely"
+      ],
+      "emotions": [
+        "iienai",
+        "sabishii"
+      ],
+      "keywords": [
+        "話す",
+        "共有",
+        "頼る"
+      ],
+      "step": "今の状況を、事実だけ誰かに伝える。"
+    },
+    {
+      "id": "o21-x020",
+      "kind": "original",
+      "text": "比べてしまう日は、比べる材料を自分の記録に変えよう。",
+      "author": "落ちません。編集部",
+      "category": [
+        "self"
+      ],
+      "source": "落ちません。編集部",
+      "verification": "primary",
+      "rights": "original",
+      "tone": [
+        "gentle",
+        "steady"
+      ],
+      "mood": [
+        1,
+        5
+      ],
+      "concerns": [
+        "self"
+      ],
+      "tags": [
+        "compare"
+      ],
+      "emotions": [
+        "shitto",
+        "okiteikareta"
+      ],
+      "keywords": [
+        "比べる",
+        "自分の記録",
+        "成長"
+      ],
+      "step": "先月の自分の記録と、今日を比べてみる。"
+    },
+    {
+      "id": "o21-x021",
+      "kind": "original",
+      "text": "目標が大きすぎて動けない時は、今日の分だけ切り取ろう。",
+      "author": "落ちません。編集部",
+      "category": [
+        "step"
+      ],
+      "source": "落ちません。編集部",
+      "verification": "primary",
+      "rights": "original",
+      "tone": [
+        "gentle",
+        "steady"
+      ],
+      "mood": [
+        1,
+        5
+      ],
+      "concerns": [
+        "any"
+      ],
+      "tags": [
+        "small"
+      ],
+      "emotions": [
+        "oitsumerare",
+        "muki"
+      ],
+      "keywords": [
+        "目標",
+        "切り取る",
+        "今日の分"
+      ],
+      "step": "大きな目標から、今日の分だけを書き出す。"
+    },
+    {
+      "id": "o21-x022",
+      "kind": "original",
+      "text": "続けるコツは、やる時間と場所を先に決めておくこと。",
+      "author": "落ちません。編集部",
+      "category": [
+        "keep",
+        "prepare"
+      ],
+      "source": "落ちません。編集部",
+      "verification": "primary",
+      "rights": "original",
+      "tone": [
+        "steady"
+      ],
+      "mood": [
+        2,
+        5
+      ],
+      "concerns": [
+        "any"
+      ],
+      "tags": [
+        "prepare"
+      ],
+      "emotions": [
+        "muki",
+        "motokashii"
+      ],
+      "keywords": [
+        "習慣",
+        "時間と場所",
+        "決めておく"
+      ],
+      "step": "続けたいことの「時間」と「場所」を一つずつ決める。"
+    },
+    {
+      "id": "o21-x023",
+      "kind": "original",
+      "text": "できたことに印をつけよう。印が並ぶと、次も続けたくなる。",
+      "author": "落ちません。編集部",
+      "category": [
+        "keep"
+      ],
+      "source": "落ちません。編集部",
+      "verification": "primary",
+      "rights": "original",
+      "tone": [
+        "gentle",
+        "steady"
+      ],
+      "mood": [
+        1,
+        5
+      ],
+      "concerns": [
+        "any"
+      ],
+      "tags": [
+        "small"
+      ],
+      "emotions": [
+        "muki",
+        "munashii"
+      ],
+      "keywords": [
+        "印",
+        "記録",
+        "続ける"
+      ],
+      "step": "カレンダーに、今日できた印を一つつける。"
+    },
+    {
+      "id": "o21-x024",
+      "kind": "original",
+      "text": "怒りで送りたくなった言葉は、下書きにしまって一晩待つ。",
+      "author": "落ちません。編集部",
+      "category": [
+        "calm",
+        "people"
+      ],
+      "source": "落ちません。編集部",
+      "verification": "primary",
+      "rights": "original",
+      "tone": [
+        "steady"
+      ],
+      "mood": [
+        2,
+        5
+      ],
+      "concerns": [
+        "people",
+        "work"
+      ],
+      "tags": [
+        "rest"
+      ],
+      "emotions": [
+        "ikari",
+        "iraira"
+      ],
+      "keywords": [
+        "怒り",
+        "下書き",
+        "一晩待つ"
+      ],
+      "step": "送りたい言葉を下書きに入れて、明日読み直す。"
+    },
+    {
+      "id": "o21-x025",
+      "kind": "original",
+      "text": "「すみません」が続いた日は、自分にも「ありがとう」を一つ。",
+      "author": "落ちません。編集部",
+      "category": [
+        "self",
+        "people"
+      ],
+      "source": "落ちません。編集部",
+      "verification": "primary",
+      "rights": "original",
+      "tone": [
+        "gentle"
+      ],
+      "mood": [
+        1,
+        5
+      ],
+      "concerns": [
+        "people",
+        "self"
+      ],
+      "tags": [
+        "self"
+      ],
+      "emotions": [
+        "zaiakukan",
+        "tsukare"
+      ],
+      "keywords": [
+        "すみません",
+        "ありがとう",
+        "自分に"
+      ],
+      "step": "今日の自分に「ありがとう」を一つ言う。"
+    },
+    {
+      "id": "o21-x026",
+      "kind": "original",
+      "text": "迷った時は、半年後の自分が喜ぶ方を選ぼう。",
+      "author": "落ちません。編集部",
+      "category": [
+        "prepare",
+        "self"
+      ],
+      "source": "落ちません。編集部",
+      "verification": "primary",
+      "rights": "original",
+      "tone": [
+        "steady"
+      ],
+      "mood": [
+        2,
+        5
+      ],
+      "concerns": [
+        "any"
+      ],
+      "tags": [
+        "prepare"
+      ],
+      "emotions": [
+        "mayoi"
+      ],
+      "keywords": [
+        "迷う",
+        "半年後の自分",
+        "選ぶ"
+      ],
+      "step": "迷っていることを「半年後の自分ならどっち？」と考える。"
+    },
+    {
+      "id": "o21-x027",
+      "kind": "original",
+      "text": "やらない理由が三つ浮かんだら、やる理由も三つ書いてみよう。",
+      "author": "落ちません。編集部",
+      "category": [
+        "step",
+        "calm"
+      ],
+      "source": "落ちません。編集部",
+      "verification": "primary",
+      "rights": "original",
+      "tone": [
+        "steady"
+      ],
+      "mood": [
+        2,
+        5
+      ],
+      "concerns": [
+        "any"
+      ],
+      "tags": [
+        "reframe"
+      ],
+      "emotions": [
+        "mayoi",
+        "muki"
+      ],
+      "keywords": [
+        "やらない理由",
+        "やる理由",
+        "書く"
+      ],
+      "step": "やる理由を、三つ書き出す。"
+    },
+    {
+      "id": "o21-x028",
+      "kind": "original",
+      "text": "一人で決められない時は、決め方だけ先に決めよう。",
+      "author": "落ちません。編集部",
+      "category": [
+        "prepare"
+      ],
+      "source": "落ちません。編集部",
+      "verification": "primary",
+      "rights": "original",
+      "tone": [
+        "steady"
+      ],
+      "mood": [
+        2,
+        5
+      ],
+      "concerns": [
+        "any"
+      ],
+      "tags": [
+        "prepare"
+      ],
+      "emotions": [
+        "mayoi"
+      ],
+      "keywords": [
+        "決め方",
+        "迷う",
+        "ルール"
+      ],
+      "step": "「明日の12時までに決める」など、決め方を一つ決める。"
+    },
+    {
+      "id": "o21-x029",
+      "kind": "original",
+      "text": "昨日の自分より一つだけ前へ。その一つは、小さくていい。",
+      "author": "落ちません。編集部",
+      "category": [
+        "keep",
+        "step"
+      ],
+      "source": "落ちません。編集部",
+      "verification": "primary",
+      "rights": "original",
+      "tone": [
+        "gentle",
+        "steady"
+      ],
+      "mood": [
+        1,
+        5
+      ],
+      "concerns": [
+        "any"
+      ],
+      "tags": [
+        "small"
+      ],
+      "emotions": [
+        "motokashii",
+        "okiteikareta"
+      ],
+      "keywords": [
+        "一つだけ前へ",
+        "小さくていい",
+        "昨日の自分"
+      ],
+      "step": "今日の「一つだけ」を決めて、やる。"
+    },
+    {
+      "id": "o21-x030",
+      "kind": "original",
+      "text": "作ることは、考えることより、ずっと多くを教えてくれる。",
+      "author": "落ちません。編集部",
+      "category": [
+        "learn",
+        "step"
+      ],
+      "source": "落ちません。編集部",
+      "verification": "primary",
+      "rights": "original",
+      "tone": [
+        "steady",
+        "push"
+      ],
+      "mood": [
+        3,
+        5
+      ],
+      "concerns": [
+        "work",
+        "self"
+      ],
+      "tags": [
+        "learn"
+      ],
+      "emotions": [
+        "chousen",
+        "wakuwaku"
+      ],
+      "keywords": [
+        "作る",
+        "試作",
+        "学ぶ"
+      ],
+      "step": "小さな試作品を、一つ作ってみる。"
+    },
+    {
+      "id": "o21-x031",
+      "kind": "original",
+      "text": "誰かの役に立つものを一つ作れたら、それはもう仕事になっている。",
+      "author": "落ちません。編集部",
+      "category": [
+        "work"
+      ],
+      "source": "落ちません。編集部",
+      "verification": "primary",
+      "rights": "original",
+      "tone": [
+        "steady"
+      ],
+      "mood": [
+        3,
+        5
+      ],
+      "concerns": [
+        "work",
+        "money"
+      ],
+      "tags": [
+        "fun"
+      ],
+      "emotions": [
+        "munashii",
+        "chousen"
+      ],
+      "keywords": [
+        "役に立つ",
+        "作る",
+        "仕事"
+      ],
+      "step": "身近な人の困りごとを、一つ聞いてみる。"
+    },
+    {
+      "id": "o21-x032",
+      "kind": "original",
+      "text": "最初のお客さんは、いちばん近くにいる一人。",
+      "author": "落ちません。編集部",
+      "category": [
+        "work",
+        "people"
+      ],
+      "source": "落ちません。編集部",
+      "verification": "primary",
+      "rights": "original",
+      "tone": [
+        "steady"
+      ],
+      "mood": [
+        3,
+        5
+      ],
+      "concerns": [
+        "work",
+        "people"
+      ],
+      "tags": [
+        "small"
+      ],
+      "emotions": [
+        "chousen",
+        "kibou"
+      ],
+      "keywords": [
+        "最初のお客さん",
+        "身近な一人",
+        "届ける"
+      ],
+      "step": "作ったものを、身近な一人に使ってもらう。"
+    },
+    {
+      "id": "o21-x033",
+      "kind": "original",
+      "text": "厳しい感想をくれる人は、いちばんの味方。",
+      "author": "落ちません。編集部",
+      "category": [
+        "work",
+        "people"
+      ],
+      "source": "落ちません。編集部",
+      "verification": "primary",
+      "rights": "original",
+      "tone": [
+        "steady",
+        "push"
+      ],
+      "mood": [
+        3,
+        5
+      ],
+      "concerns": [
+        "work",
+        "people"
+      ],
+      "tags": [
+        "learn"
+      ],
+      "emotions": [
+        "kuyashii",
+        "chousen"
+      ],
+      "keywords": [
+        "厳しい感想",
+        "味方",
+        "改善"
+      ],
+      "step": "もらった感想から、直すところを一つ決める。"
+    },
+    {
+      "id": "o21-x034",
+      "kind": "original",
+      "text": "今日の失敗は、明日の手順書の一行になる。",
+      "author": "落ちません。編集部",
+      "category": [
+        "learn",
+        "prepare"
+      ],
+      "source": "落ちません。編集部",
+      "verification": "primary",
+      "rights": "original",
+      "tone": [
+        "steady"
+      ],
+      "mood": [
+        2,
+        5
+      ],
+      "concerns": [
+        "work"
+      ],
+      "tags": [
+        "learn"
+      ],
+      "emotions": [
+        "koukai",
+        "kuyashii"
+      ],
+      "keywords": [
+        "手順書",
+        "失敗",
+        "次に活かす"
+      ],
+      "step": "今日の失敗を、手順書に一行足す。"
+    },
+    {
+      "id": "o21-x035",
+      "kind": "original",
+      "text": "出す前に、本番と同じ形で一度ためそう。",
+      "author": "落ちません。編集部",
+      "category": [
+        "prepare",
+        "work"
+      ],
+      "source": "落ちません。編集部",
+      "verification": "primary",
+      "rights": "original",
+      "tone": [
+        "steady"
+      ],
+      "mood": [
+        3,
+        5
+      ],
+      "concerns": [
+        "work"
+      ],
+      "tags": [
+        "prepare"
+      ],
+      "emotions": [
+        "kinchou",
+        "hotto"
+      ],
+      "keywords": [
+        "試す",
+        "本番と同じ形",
+        "確認"
+      ],
+      "step": "出す前に、本番と同じ手順で一度ためす。"
+    },
+    {
+      "id": "o21-x036",
+      "kind": "original",
+      "text": "時間がかかる手続きは、いちばん最初に始めておこう。",
+      "author": "落ちません。編集部",
+      "category": [
+        "prepare",
+        "work"
+      ],
+      "source": "落ちません。編集部",
+      "verification": "primary",
+      "rights": "original",
+      "tone": [
+        "steady"
+      ],
+      "mood": [
+        2,
+        5
+      ],
+      "concerns": [
+        "work",
+        "money"
+      ],
+      "tags": [
+        "prepare"
+      ],
+      "emotions": [
+        "aseri",
+        "fuan"
+      ],
+      "keywords": [
+        "手続き",
+        "最初に",
+        "段取り"
+      ],
+      "step": "時間のかかりそうな手続きを、今日一つ申しこむ。"
+    },
+    {
+      "id": "o21-x037",
+      "kind": "original",
+      "text": "一度つまずいたことも、道具や仲間が変われば、またやれる。",
+      "author": "落ちません。編集部",
+      "category": [
+        "hope",
+        "learn"
+      ],
+      "source": "落ちません。編集部",
+      "verification": "primary",
+      "rights": "original",
+      "tone": [
+        "gentle",
+        "steady"
+      ],
+      "mood": [
+        1,
+        5
+      ],
+      "concerns": [
+        "any"
+      ],
+      "tags": [
+        "reframe"
+      ],
+      "emotions": [
+        "koukai",
+        "okiteikareta"
+      ],
+      "keywords": [
+        "つまずき",
+        "やり直し",
+        "道具と仲間"
+      ],
+      "step": "前にあきらめたことを、一つ思い出して書く。"
+    },
+    {
+      "id": "o21-x038",
+      "kind": "original",
+      "text": "気持ちが落ちている時の「もう無理」は、今日の答えで、一生の答えじゃない。",
+      "author": "落ちません。編集部",
+      "category": [
+        "calm",
+        "hope"
+      ],
+      "source": "落ちません。編集部",
+      "verification": "primary",
+      "rights": "original",
+      "tone": [
+        "gentle"
+      ],
+      "mood": [
+        1,
+        3
+      ],
+      "concerns": [
+        "any"
+      ],
+      "tags": [
+        "reframe"
+      ],
+      "emotions": [
+        "ochikomi",
+        "oitsumerare"
+      ],
+      "keywords": [
+        "もう無理",
+        "今日の答え",
+        "変わる"
+      ],
+      "step": "今日は大きな結論を出さずに、早めに休む。"
+    },
+    {
+      "id": "o21-x039",
+      "kind": "original",
+      "text": "つらさを数字で言ってみよう。10のうち、今いくつ？",
+      "author": "落ちません。編集部",
+      "category": [
+        "calm",
+        "self"
+      ],
+      "source": "落ちません。編集部",
+      "verification": "primary",
+      "rights": "original",
+      "tone": [
+        "gentle"
+      ],
+      "mood": [
+        1,
+        4
+      ],
+      "concerns": [
+        "any"
+      ],
+      "tags": [
+        "reframe"
+      ],
+      "emotions": [
+        "iienai",
+        "moyamoya"
+      ],
+      "keywords": [
+        "つらさ",
+        "数字",
+        "言葉にする"
+      ],
+      "step": "今のつらさを、10のうちいくつか書いておく。"
+    },
+    {
+      "id": "o21-x040",
+      "kind": "original",
+      "text": "体を少し温めると、気持ちも少しほどける。",
+      "author": "落ちません。編集部",
+      "category": [
+        "rest"
+      ],
+      "source": "落ちません。編集部",
+      "verification": "primary",
+      "rights": "original",
+      "tone": [
+        "gentle"
+      ],
+      "mood": [
+        1,
+        4
+      ],
+      "concerns": [
+        "health"
+      ],
+      "tags": [
+        "rest"
+      ],
+      "emotions": [
+        "kinchou",
+        "sabishii"
+      ],
+      "keywords": [
+        "温める",
+        "ほどける",
+        "体"
+      ],
+      "step": "温かい飲み物か、温かいシャワーで体を温める。"
+    },
+    {
+      "id": "o21-x041",
+      "kind": "original",
+      "text": "休む日を決めておくと、がんばる日にも集中できる。",
+      "author": "落ちません。編集部",
+      "category": [
+        "rest",
+        "prepare"
+      ],
+      "source": "落ちません。編集部",
+      "verification": "primary",
+      "rights": "original",
+      "tone": [
+        "gentle",
+        "steady"
+      ],
+      "mood": [
+        1,
+        5
+      ],
+      "concerns": [
+        "health",
+        "work"
+      ],
+      "tags": [
+        "rest"
+      ],
+      "emotions": [
+        "tsukare",
+        "aseri"
+      ],
+      "keywords": [
+        "休む日",
+        "集中",
+        "予定"
+      ],
+      "step": "今週の休む日を、先に一日決める。"
+    },
+    {
+      "id": "o21-x042",
+      "kind": "original",
+      "text": "自分の好きなやり方を知っていると、苦手なことも少し楽になる。",
+      "author": "落ちません。編集部",
+      "category": [
+        "self"
+      ],
+      "source": "落ちません。編集部",
+      "verification": "primary",
+      "rights": "original",
+      "tone": [
+        "steady"
+      ],
+      "mood": [
+        2,
+        5
+      ],
+      "concerns": [
+        "self",
+        "work"
+      ],
+      "tags": [
+        "self"
+      ],
+      "emotions": [
+        "jishinnai",
+        "taikutsu"
+      ],
+      "keywords": [
+        "好きなやり方",
+        "苦手",
+        "工夫"
+      ],
+      "step": "うまくいく時の自分のやり方を、一つ書く。"
+    },
+    {
+      "id": "o21-x043",
+      "kind": "original",
+      "text": "「やる」と決めた数より、「やった」数を数えよう。",
+      "author": "落ちません。編集部",
+      "category": [
+        "keep",
+        "self"
+      ],
+      "source": "落ちません。編集部",
+      "verification": "primary",
+      "rights": "original",
+      "tone": [
+        "steady"
+      ],
+      "mood": [
+        2,
+        5
+      ],
+      "concerns": [
+        "any"
+      ],
+      "tags": [
+        "self"
+      ],
+      "emotions": [
+        "munashii",
+        "motokashii"
+      ],
+      "keywords": [
+        "やった数",
+        "数える",
+        "記録"
+      ],
+      "step": "今週やったことを、数えて書く。"
+    },
+    {
+      "id": "o21-x044",
+      "kind": "original",
+      "text": "欲しい結果より、毎日できる行動を目標にしよう。",
+      "author": "落ちません。編集部",
+      "category": [
+        "keep",
+        "prepare"
+      ],
+      "source": "落ちません。編集部",
+      "verification": "primary",
+      "rights": "original",
+      "tone": [
+        "steady"
+      ],
+      "mood": [
+        2,
+        5
+      ],
+      "concerns": [
+        "any"
+      ],
+      "tags": [
+        "prepare"
+      ],
+      "emotions": [
+        "aseri",
+        "motokashii"
+      ],
+      "keywords": [
+        "行動の目標",
+        "毎日",
+        "続ける"
+      ],
+      "step": "結果の目標を、毎日できる行動に言い直す。"
+    },
+    {
+      "id": "o21-x045",
+      "kind": "original",
+      "text": "人の目が気になる時は、「誰のために作るのか」を一人だけ思い浮かべよう。",
+      "author": "落ちません。編集部",
+      "category": [
+        "self",
+        "work"
+      ],
+      "source": "落ちません。編集部",
+      "verification": "primary",
+      "rights": "original",
+      "tone": [
+        "steady"
+      ],
+      "mood": [
+        2,
+        5
+      ],
+      "concerns": [
+        "work",
+        "people",
+        "self"
+      ],
+      "tags": [
+        "reframe"
+      ],
+      "emotions": [
+        "kinchou",
+        "jishinnai"
+      ],
+      "keywords": [
+        "人の目",
+        "誰のため",
+        "一人"
+      ],
+      "step": "届けたい一人の名前を、一つ書く。"
+    },
+    {
+      "id": "o21-x046",
+      "kind": "original",
+      "text": "動けない理由を責めるより、動ける条件を一つ探そう。",
+      "author": "落ちません。編集部",
+      "category": [
+        "step",
+        "self"
+      ],
+      "source": "落ちません。編集部",
+      "verification": "primary",
+      "rights": "original",
+      "tone": [
+        "gentle",
+        "steady"
+      ],
+      "mood": [
+        1,
+        5
+      ],
+      "concerns": [
+        "any"
+      ],
+      "tags": [
+        "reframe"
+      ],
+      "emotions": [
+        "muki",
+        "nasakenai"
+      ],
+      "keywords": [
+        "動けない",
+        "条件",
+        "探す"
+      ],
+      "step": "動けた日の条件（時間・場所・人）を、一つ思い出す。"
+    },
+    {
+      "id": "o21-x047",
+      "kind": "original",
+      "text": "話がまとまらない時は、結論・理由・お願いの順に書いてみよう。",
+      "author": "落ちません。編集部",
+      "category": [
+        "work",
+        "people"
+      ],
+      "source": "落ちません。編集部",
+      "verification": "primary",
+      "rights": "original",
+      "tone": [
+        "steady"
+      ],
+      "mood": [
+        2,
+        5
+      ],
+      "concerns": [
+        "work",
+        "people"
+      ],
+      "tags": [
+        "prepare"
+      ],
+      "emotions": [
+        "iienai",
+        "mayoi"
+      ],
+      "keywords": [
+        "伝え方",
+        "結論",
+        "順番"
+      ],
+      "step": "伝えたいことを、結論・理由・お願いの三行で書く。"
+    },
+    {
+      "id": "o21-x048",
+      "kind": "original",
+      "text": "最初から上手な人はいない。上手な人は、たくさん出した人だ。",
+      "author": "落ちません。編集部",
+      "category": [
+        "learn",
+        "keep"
+      ],
+      "source": "落ちません。編集部",
+      "verification": "primary",
+      "rights": "original",
+      "tone": [
+        "steady"
+      ],
+      "mood": [
+        2,
+        5
+      ],
+      "concerns": [
+        "work",
+        "self"
+      ],
+      "tags": [
+        "learn"
+      ],
+      "emotions": [
+        "jishinnai",
+        "shitto"
+      ],
+      "keywords": [
+        "上手な人",
+        "たくさん出す",
+        "続ける"
+      ],
+      "step": "今日も一つ、何かを出す。"
+    },
+    {
+      "id": "o21-x049",
+      "kind": "original",
+      "text": "大事なことほど、元気な時間に置こう。",
+      "author": "落ちません。編集部",
+      "category": [
+        "prepare"
+      ],
+      "source": "落ちません。編集部",
+      "verification": "primary",
+      "rights": "original",
+      "tone": [
+        "steady"
+      ],
+      "mood": [
+        2,
+        5
+      ],
+      "concerns": [
+        "work",
+        "any"
+      ],
+      "tags": [
+        "prepare"
+      ],
+      "emotions": [
+        "tsukare",
+        "yaruki"
+      ],
+      "keywords": [
+        "大事なこと",
+        "元気な時間",
+        "段取り"
+      ],
+      "step": "明日いちばん元気な時間に、大事なことを一つ入れる。"
+    },
+    {
+      "id": "o21-x050",
+      "kind": "original",
+      "text": "今日のあなたが一歩でも進んだなら、それが何より大事なこと。",
+      "author": "落ちません。編集部",
+      "category": [
+        "self",
+        "today"
+      ],
+      "source": "落ちません。編集部",
+      "verification": "primary",
+      "rights": "original",
+      "tone": [
+        "gentle",
+        "steady"
+      ],
+      "mood": [
+        1,
+        5
+      ],
+      "concerns": [
+        "any"
+      ],
+      "tags": [
+        "self"
+      ],
+      "emotions": [
+        "munashii",
+        "nasakenai"
+      ],
+      "keywords": [
+        "一歩",
+        "進んだ",
+        "大事"
+      ],
+      "step": "今日進んだことを、一つだけ書く。"
+    },
+    {
       "id": "o21-l001",
       "kind": "original",
       "text": "失敗は、次にうまくいくための材料。",
@@ -5329,43 +5473,6 @@ export const CORPUS_V2_1 = {
         "覚えられる"
       ],
       "step": "失敗のあとにできることを、一つする。"
-    },
-    {
-      "id": "o21-l015",
-      "kind": "original",
-      "text": "学ぶのに遅すぎることはない。",
-      "author": "落ちません。編集部",
-      "category": [
-        "learn",
-        "hope"
-      ],
-      "source": "落ちません。編集部",
-      "verification": "primary",
-      "rights": "original",
-      "tone": [
-        "gentle",
-        "steady"
-      ],
-      "mood": [
-        2,
-        5
-      ],
-      "concerns": [
-        "self"
-      ],
-      "tags": [
-        "learn"
-      ],
-      "emotions": [
-        "okiteikareta",
-        "chousen"
-      ],
-      "keywords": [
-        "学ぶ",
-        "遅すぎない",
-        "今から"
-      ],
-      "step": "学びたいことを、一つ調べてみる。"
     },
     {
       "id": "o21-l016",
@@ -7245,7 +7352,7 @@ export const CORPUS_V2_1 = {
     {
       "id": "o21-l068",
       "kind": "original",
-      "text": "心配の9割は、起こらないと言われている。",
+      "text": "心配したことの多くは、思ったほどには起こらない。",
       "author": "落ちません。編集部",
       "category": [
         "calm"
@@ -8417,41 +8524,6 @@ export const CORPUS_V2_1 = {
       "step": "いちばん簡単なことを、一つだけやる。"
     },
     {
-      "id": "o21-l101",
-      "kind": "original",
-      "text": "落ち込む日があるのは、ちゃんと生きている証拠。",
-      "author": "落ちません。編集部",
-      "category": [
-        "calm",
-        "self"
-      ],
-      "source": "落ちません。編集部",
-      "verification": "primary",
-      "rights": "original",
-      "tone": [
-        "gentle"
-      ],
-      "mood": [
-        1,
-        3
-      ],
-      "concerns": [
-        "any"
-      ],
-      "tags": [
-        "reframe"
-      ],
-      "emotions": [
-        "ochikomi"
-      ],
-      "keywords": [
-        "落ち込む",
-        "生きている",
-        "普通"
-      ],
-      "step": "今日は、落ち込んでいる自分をそのまま認める。"
-    },
-    {
       "id": "o21-l102",
       "kind": "original",
       "text": "疲れた時の「もう無理」は、休めの合図。",
@@ -9347,43 +9419,6 @@ export const CORPUS_V2_1 = {
         "強さ"
       ],
       "step": "今困っていることを、誰かに一言伝える。"
-    },
-    {
-      "id": "o21-p007",
-      "kind": "original",
-      "text": "ひとりの時間は、さびしい時間じゃなくて、充電の時間。",
-      "author": "落ちません。編集部",
-      "category": [
-        "rest",
-        "people"
-      ],
-      "source": "落ちません。編集部",
-      "verification": "primary",
-      "rights": "original",
-      "tone": [
-        "gentle"
-      ],
-      "mood": [
-        1,
-        5
-      ],
-      "concerns": [
-        "people",
-        "self"
-      ],
-      "tags": [
-        "rest"
-      ],
-      "emotions": [
-        "sabishii",
-        "tsukare"
-      ],
-      "keywords": [
-        "ひとり",
-        "充電",
-        "休む"
-      ],
-      "step": "今日は、ひとりで好きなことを30分する。"
     },
     {
       "id": "o21-p008",
@@ -12269,42 +12304,6 @@ export const CORPUS_V2_1 = {
       "step": "今日の休む時間を、先に決めておく。"
     },
     {
-      "id": "o21-s003",
-      "kind": "original",
-      "text": "眠れない夜は、眠ろうとしなくていい。横になっているだけで、体は休んでいる。",
-      "author": "落ちません。編集部",
-      "category": [
-        "rest",
-        "calm"
-      ],
-      "source": "落ちません。編集部",
-      "verification": "primary",
-      "rights": "original",
-      "tone": [
-        "gentle"
-      ],
-      "mood": [
-        1,
-        4
-      ],
-      "concerns": [
-        "health"
-      ],
-      "tags": [
-        "rest"
-      ],
-      "emotions": [
-        "fuan",
-        "tsukare"
-      ],
-      "keywords": [
-        "眠れない",
-        "横になる",
-        "休む"
-      ],
-      "step": "画面を見ずに、目を閉じて横になる。"
-    },
-    {
       "id": "o21-s004",
       "kind": "original",
       "text": "何もしなかった日も、ちゃんと生きていた日。",
@@ -12992,41 +12991,6 @@ export const CORPUS_V2_1 = {
       "step": "鏡の自分に「大丈夫」と言う。"
     },
     {
-      "id": "o21-s023",
-      "kind": "original",
-      "text": "できないことより、できたことを数えよう。",
-      "author": "落ちません。編集部",
-      "category": [
-        "self"
-      ],
-      "source": "落ちません。編集部",
-      "verification": "primary",
-      "rights": "original",
-      "tone": [
-        "gentle"
-      ],
-      "mood": [
-        1,
-        5
-      ],
-      "concerns": [
-        "self"
-      ],
-      "tags": [
-        "self"
-      ],
-      "emotions": [
-        "nasakenai",
-        "munashii"
-      ],
-      "keywords": [
-        "できたこと",
-        "数える",
-        "ほめる"
-      ],
-      "step": "今日できたことを、小さいことでいいので三つ書く。"
-    },
-    {
       "id": "o21-s024",
       "kind": "original",
       "text": "完璧じゃないところが、あなたらしさ。",
@@ -13642,42 +13606,6 @@ export const CORPUS_V2_1 = {
       "step": "今日、自分のために一つだけいいことをする。"
     },
     {
-      "id": "o21-s041",
-      "kind": "original",
-      "text": "お金の不安は、数字にすると少し小さくなる。",
-      "author": "落ちません。編集部",
-      "category": [
-        "calm",
-        "prepare"
-      ],
-      "source": "落ちません。編集部",
-      "verification": "primary",
-      "rights": "original",
-      "tone": [
-        "steady"
-      ],
-      "mood": [
-        2,
-        5
-      ],
-      "concerns": [
-        "money"
-      ],
-      "tags": [
-        "prepare"
-      ],
-      "emotions": [
-        "fuan",
-        "aseri"
-      ],
-      "keywords": [
-        "お金の不安",
-        "数字",
-        "見える化"
-      ],
-      "step": "今月の出ていくお金を、ざっと書き出す。"
-    },
-    {
       "id": "o21-s042",
       "kind": "original",
       "text": "お金がなくても、あなたの価値は減らない。",
@@ -14148,42 +14076,6 @@ export const CORPUS_V2_1 = {
         "考え"
       ],
       "step": "今浮かんでいる悪い考えに「本当かな？」と一言つける。"
-    },
-    {
-      "id": "o21-s055",
-      "kind": "original",
-      "text": "ほっとできる場所を、一つ持っておこう。",
-      "author": "落ちません。編集部",
-      "category": [
-        "rest",
-        "calm"
-      ],
-      "source": "落ちません。編集部",
-      "verification": "primary",
-      "rights": "original",
-      "tone": [
-        "gentle"
-      ],
-      "mood": [
-        1,
-        5
-      ],
-      "concerns": [
-        "self"
-      ],
-      "tags": [
-        "rest"
-      ],
-      "emotions": [
-        "fuan",
-        "tsukare"
-      ],
-      "keywords": [
-        "ほっとできる場所",
-        "居場所",
-        "休む"
-      ],
-      "step": "ほっとできる場所を一つ思い浮かべる。"
     },
     {
       "id": "o21-s056",
@@ -15807,42 +15699,6 @@ export const CORPUS_V2_1 = {
       "step": "今の資料を8割で出す日を決める。"
     },
     {
-      "id": "o21-w016",
-      "kind": "original",
-      "text": "疲れている時の判断は、明日の自分にまかせよう。",
-      "author": "落ちません。編集部",
-      "category": [
-        "work",
-        "rest"
-      ],
-      "source": "落ちません。編集部",
-      "verification": "primary",
-      "rights": "original",
-      "tone": [
-        "gentle"
-      ],
-      "mood": [
-        1,
-        4
-      ],
-      "concerns": [
-        "work"
-      ],
-      "tags": [
-        "rest"
-      ],
-      "emotions": [
-        "tsukare",
-        "mayoi"
-      ],
-      "keywords": [
-        "判断",
-        "疲れ",
-        "明日"
-      ],
-      "step": "大事な決めごとは、ひと晩寝てから決める。"
-    },
-    {
       "id": "o21-w017",
       "kind": "original",
       "text": "「手伝おうか」と言える人は、「手伝って」とも言っていい。",
@@ -16681,42 +16537,6 @@ export const CORPUS_V2_1 = {
         "手前"
       ],
       "step": "一番手前の、すぐ終わる仕事を一つ片づける。"
-    },
-    {
-      "id": "o21-w040",
-      "kind": "original",
-      "text": "楽しそうに働く人のまわりには、人が集まる。",
-      "author": "落ちません。編集部",
-      "category": [
-        "work",
-        "people"
-      ],
-      "source": "落ちません。編集部",
-      "verification": "primary",
-      "rights": "original",
-      "tone": [
-        "steady"
-      ],
-      "mood": [
-        3,
-        5
-      ],
-      "concerns": [
-        "work"
-      ],
-      "tags": [
-        "fun"
-      ],
-      "emotions": [
-        "tanoshii",
-        "wakuwaku"
-      ],
-      "keywords": [
-        "楽しく",
-        "雰囲気",
-        "人が集まる"
-      ],
-      "step": "今日の仕事で、楽しんでいい部分を一つ見つける。"
     },
     {
       "id": "o21-w041",
@@ -20212,85 +20032,6 @@ export const CORPUS_V2_1 = {
       "step": "毎日の小さな出費を、一つだけ見直す。"
     },
     {
-      "id": "p21-kasegu",
-      "kind": "quote",
-      "text": "稼ぐに追いつく貧乏なし。",
-      "author": "ことわざ",
-      "field": "ことわざ",
-      "category": [
-        "keep",
-        "work"
-      ],
-      "source": "ことわざ",
-      "sourceNote": "こつこつ働いていれば、貧しさに追いつかれることはない",
-      "verification": "proverb",
-      "rights": "proverb",
-      "tone": [
-        "steady"
-      ],
-      "mood": [
-        2,
-        5
-      ],
-      "concerns": [
-        "money",
-        "work"
-      ],
-      "tags": [
-        "small"
-      ],
-      "emotions": [
-        "fuan",
-        "motokashii"
-      ],
-      "keywords": [
-        "働く",
-        "こつこつ",
-        "お金"
-      ],
-      "step": "今日の仕事を、一つだけ丁寧に仕上げる。"
-    },
-    {
-      "id": "p21-yamai-ki",
-      "kind": "quote",
-      "text": "病は気から。",
-      "author": "ことわざ",
-      "field": "ことわざ",
-      "category": [
-        "rest",
-        "calm"
-      ],
-      "source": "ことわざ",
-      "sourceNote": "気持ちのあり方が、体の調子にも影響する",
-      "verification": "proverb",
-      "rights": "proverb",
-      "tone": [
-        "gentle",
-        "steady"
-      ],
-      "mood": [
-        1,
-        5
-      ],
-      "concerns": [
-        "health"
-      ],
-      "tags": [
-        "rest",
-        "reframe"
-      ],
-      "emotions": [
-        "tsukare",
-        "fuan"
-      ],
-      "keywords": [
-        "気持ち",
-        "体",
-        "調子"
-      ],
-      "step": "体のために、今日は気持ちが明るくなることを一つする。"
-    },
-    {
       "id": "p21-neruko",
       "kind": "quote",
       "text": "寝る子は育つ。",
@@ -20890,44 +20631,6 @@ export const CORPUS_V2_1 = {
         "会話"
       ],
       "step": "次の会話で、相手に一つ質問してみる。"
-    },
-    {
-      "id": "p21-egao",
-      "kind": "quote",
-      "text": "笑顔にまさる化粧なし。",
-      "author": "ことわざ",
-      "field": "ことわざ",
-      "category": [
-        "self",
-        "people"
-      ],
-      "source": "ことわざ",
-      "verification": "proverb",
-      "rights": "proverb",
-      "tone": [
-        "steady"
-      ],
-      "mood": [
-        3,
-        5
-      ],
-      "concerns": [
-        "self",
-        "people"
-      ],
-      "tags": [
-        "fun",
-        "self"
-      ],
-      "emotions": [
-        "hotto",
-        "tanoshii"
-      ],
-      "keywords": [
-        "笑顔",
-        "いちばん"
-      ],
-      "step": "鏡の前で、一回だけ笑ってみる。"
     },
     {
       "id": "p21-kannin",
@@ -22822,43 +22525,6 @@ export const CORPUS_V2_1 = {
       "step": "自分の「志」を一行で書いてみる。"
     },
     {
-      "id": "p21-sakura",
-      "kind": "quote",
-      "text": "桜切る馬鹿、梅切らぬ馬鹿。",
-      "author": "ことわざ",
-      "field": "ことわざ",
-      "category": [
-        "work",
-        "people"
-      ],
-      "source": "ことわざ",
-      "sourceNote": "ものごと（人）によって、合う手入れのしかたは違う",
-      "verification": "proverb",
-      "rights": "proverb",
-      "tone": [
-        "steady"
-      ],
-      "mood": [
-        3,
-        5
-      ],
-      "concerns": [
-        "work",
-        "people"
-      ],
-      "tags": [
-        "reframe"
-      ],
-      "emotions": [
-        "mayoi"
-      ],
-      "keywords": [
-        "向き不向き",
-        "やり方は違う"
-      ],
-      "step": "人や仕事に合わせて、やり方を一つ変えてみる。"
-    },
-    {
       "id": "p21-yoi-kusuri",
       "kind": "quote",
       "text": "良薬は口に苦し。",
@@ -22937,42 +22603,6 @@ export const CORPUS_V2_1 = {
       "step": "身近なところで、今日できることを一つ見つける。"
     },
     {
-      "id": "p21-ishi-no-ue2",
-      "kind": "quote",
-      "text": "点滴石を穿つ。",
-      "author": "ことわざ",
-      "field": "ことわざ",
-      "category": [
-        "keep"
-      ],
-      "source": "ことわざ（『漢書』から）",
-      "verification": "proverb",
-      "rights": "proverb",
-      "tone": [
-        "gentle",
-        "steady"
-      ],
-      "mood": [
-        1,
-        5
-      ],
-      "concerns": [
-        "any"
-      ],
-      "tags": [
-        "small"
-      ],
-      "emotions": [
-        "motokashii",
-        "muki"
-      ],
-      "keywords": [
-        "しずく",
-        "続ける"
-      ],
-      "step": "1日1分でいいので、続けることを一つ決める。"
-    },
-    {
       "id": "p21-isshou",
       "kind": "quote",
       "text": "一笑千金。",
@@ -23046,44 +22676,6 @@ export const CORPUS_V2_1 = {
         "実る"
       ],
       "step": "今続けていることを、あと1週間だけ続けてみる。"
-    },
-    {
-      "id": "p21-wa-wa-hitori",
-      "kind": "quote",
-      "text": "一人の百歩より、百人の一歩。",
-      "author": "ことわざ",
-      "field": "ことわざ",
-      "category": [
-        "people",
-        "work"
-      ],
-      "source": "よく知られた言葉",
-      "verification": "proverb",
-      "rights": "proverb",
-      "tone": [
-        "steady"
-      ],
-      "mood": [
-        2,
-        5
-      ],
-      "concerns": [
-        "work",
-        "people"
-      ],
-      "tags": [
-        "rely"
-      ],
-      "emotions": [
-        "oitsumerare",
-        "kansha"
-      ],
-      "keywords": [
-        "みんなで",
-        "協力",
-        "チーム"
-      ],
-      "step": "一人で抱えている仕事を、みんなで分けられないか相談する。"
     }
   ]
 };

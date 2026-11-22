@@ -168,3 +168,18 @@ textarea:focus { outline: none; border-color: var(--yellow); }
 .ep-fire { margin: 10px 0 0; font-weight: 900; font-size: 16px; color: var(--yellow); }
 .ep-src { margin: 8px 0 0; font-size: 11px; color: var(--muted); }
 .ep-src a { color: var(--muted); }
+
+/* 信頼のバッジ */
+.badges { list-style: none; padding: 0; margin: 18px 0 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.badges li { border: 1px solid #3a3a40; padding: 5px 10px; font-size: 13px; font-weight: 700; background: rgba(255, 255, 255, .03); }
+.badges li:first-child { border-color: var(--yellow); color: var(--yellow); }
+
+/* 5つの武器（1画面1機能） */
+.features { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(220px, 260px); gap: 16px; margin-top: 28px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 12px; -webkit-overflow-scrolling: touch; }
+.feature { margin: 0; scroll-snap-align: start; }
+.feature img { display: block; width: 100%; height: auto; border: 2px solid #2a2a2e; border-radius: 22px; background: #000; }
+.feature figcaption { margin-top: 12px; }
+.feature b { font-family: var(--display); font-weight: 400; color: var(--red); font-size: 22px; margin-right: 8px; }
+.feature span { font-weight: 900; font-size: 17px; }
+.feature small { display: block; margin-top: 4px; color: var(--muted); font-size: 13px; line-height: 1.6; }
+@media (min-width: 1000px) { .features { grid-auto-flow: row; grid-template-columns: repeat(5, 1fr); overflow: visible; } }

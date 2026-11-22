@@ -1,6 +1,6 @@
-// 言葉データ（RAG）Version 1.1.0 — docs/corpus/import/v1_1-quotes.csv, docs/corpus/import/v1_1-originals.csv から生成。直接は編集しない。
+// 言葉データ（RAG）Version 1.1.1 — docs/corpus/import/v1_1-quotes.csv, docs/corpus/import/v1_1-originals.csv から生成。直接は編集しない。
 export const CORPUS_V1_1 = {
-  "version": "1.1.0",
+  "version": "1.1.1",
   "date": "2026-11-22",
   "note": "",
   "items": [
@@ -237,7 +237,8 @@ export const CORPUS_V1_1 = {
     {
       "id": "q11-rongo-shinobu",
       "kind": "quote",
-      "text": "小を忍ばざれば、則ち大謀を乱る。",
+      "text": "小さなことをがまんできないと、大きな目的をこわしてしまう。",
+      "original": "小を忍ばざれば、則ち大謀を乱る",
       "author": "孔子",
       "field": "哲学",
       "category": [
@@ -385,7 +386,8 @@ export const CORPUS_V1_1 = {
     {
       "id": "q11-rongo-shohaku",
       "kind": "quote",
-      "text": "歳寒くして、然る後に松柏の彫むに後るるを知る。",
+      "text": "寒い季節になって初めて、松や柏が枯れずに残ることがわかる。",
+      "original": "歳寒くして、然る後に松柏の彫むに後るるを知る",
       "author": "孔子",
       "field": "哲学",
       "category": [
@@ -424,7 +426,8 @@ export const CORPUS_V1_1 = {
     {
       "id": "q11-rongo-kakaku",
       "kind": "quote",
-      "text": "力足らざる者は中道にして廃す。今、女は画れり。",
+      "text": "力が本当に足りない者は、途中まで進んでから倒れる。今のあなたは、やる前から自分で線を引いている。",
+      "original": "力足らざる者は中道にして廃す。今、女は画れり",
       "author": "孔子",
       "field": "哲学",
       "category": [
@@ -730,7 +733,8 @@ export const CORPUS_V1_1 = {
     {
       "id": "q11-mencius-yukan",
       "kind": "quote",
-      "text": "自ら反みて縮くんば、千万人と雖も吾往かん。",
+      "text": "自分をふり返って正しいと思えるなら、相手が千万人でも、私は行く。",
+      "original": "自ら反みて縮くんば、千万人と雖も吾往かん",
       "author": "孟子",
       "field": "哲学",
       "category": [
@@ -843,7 +847,8 @@ export const CORPUS_V1_1 = {
     {
       "id": "q11-daigaku",
       "kind": "quote",
-      "text": "苟に日に新たに、日日に新たに、又日に新たなり。",
+      "text": "今日を新しく。毎日を新しく。そして、また新しく。",
+      "original": "苟に日に新たに、日日に新たに、又日に新たなり",
       "author": "『大学』",
       "field": "思想",
       "category": [
@@ -1113,7 +1118,8 @@ export const CORPUS_V1_1 = {
     {
       "id": "q11-zeami-keiko",
       "kind": "quote",
-      "text": "稽古は強かれ、情識はなかれ。",
+      "text": "稽古はしっかりと。うぬぼれは持たずに。",
+      "original": "稽古は強かれ、情識はなかれ",
       "author": "世阿弥",
       "field": "芸能",
       "category": [
@@ -2296,8 +2302,8 @@ export const CORPUS_V1_1 = {
         "steady"
       ],
       "mood": [
-        2,
-        4
+        3,
+        5
       ],
       "concerns": [
         "any"
@@ -3056,7 +3062,7 @@ export const CORPUS_V1_1 = {
         "steady"
       ],
       "mood": [
-        1,
+        3,
         5
       ],
       "concerns": [
@@ -3073,7 +3079,7 @@ export const CORPUS_V1_1 = {
         "健康",
         "ほどほど"
       ],
-      "step": "今日の食事は、少しだけ控えめにする。"
+      "step": "今日の食事を、ゆっくり味わって食べる。"
     },
     {
       "id": "p11-nasake",
@@ -4894,7 +4900,7 @@ export const CORPUS_V1_1 = {
     {
       "id": "o11-kokoro-kaze",
       "kind": "original",
-      "text": "心が風邪をひく日もある。そんな日は、体と同じように休ませよう。",
+      "text": "心が疲れて動けない日もある。そんな日は、熱がある日と同じように休ませよう。",
       "author": "落ちません。編集部",
       "category": [
         "rest"
@@ -4922,11 +4928,11 @@ export const CORPUS_V1_1 = {
         "muki"
       ],
       "keywords": [
-        "心の風邪",
+        "心の疲れ",
         "休む",
         "休ませる"
       ],
-      "step": "今日は予定を一つ減らして、早く休む。"
+      "step": "今日は予定を一つ減らして、早く休む。何日も続く時は、医療機関や相談窓口に話してみる。"
     },
     {
       "id": "o11-dekita-kazu",
@@ -7039,7 +7045,7 @@ export const CORPUS_V1_1 = {
         "steady"
       ],
       "mood": [
-        1,
+        3,
         5
       ],
       "concerns": [

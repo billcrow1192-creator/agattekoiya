@@ -85,7 +85,7 @@ export const WORDS = [
   },
   {
     id: 'o-shigoto-ryou', kind: 'original',
-    text: '仕事が多すぎるのは、あなたの能力不足じゃない。量の問題だ。',
+    text: '仕事が多すぎるのは、あなたの能力不足とは限らない。たいていは、量の問題だ。',
     tone: ['gentle'], mood: [1, 3], concerns: ['work'], tags: ['self', 'rely'],
     step: '抱えている仕事を全部書き出して、数を数える。',
   },
@@ -109,8 +109,8 @@ export const WORDS = [
   },
   {
     id: 'o-ochikomu', kind: 'original',
-    text: '落ち込むのは、真剣に生きている証拠。ただ、落ちっぱなしにはしない。',
-    tone: ['gentle', 'steady'], mood: [1, 4], concerns: ['any', 'self'], tags: ['self'],
+    text: '落ち込むのは、真剣に生きている証拠。落ちた日が何日も続く時は、一人で抱えずに誰かに話そう。',
+    tone: ['gentle', 'steady'], mood: [1, 4], concerns: ['any', 'self'], tags: ['self', 'rely'],
     step: '気分が少しでも戻る「自分の定番」（散歩・音楽・シャワー）を一つやる。',
   },
   {
@@ -123,7 +123,7 @@ export const WORDS = [
   // ───────── オリジナル steady ─────────
   {
     id: 'o-mane', kind: 'original',
-    text: '成功の真似は疲れる。失敗の回避は、誰にでもできる。',
+    text: '成功の真似は疲れる。失敗の回避なら、今日から始められる。',
     tone: ['steady'], mood: [2, 5], concerns: ['any'], tags: ['learn', 'compare'],
     step: '「失敗の図鑑」から、自分に当てはまるものを一つだけ選ぶ。',
   },

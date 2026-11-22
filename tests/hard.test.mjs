@@ -90,3 +90,22 @@ test('落ちている日（気分1〜2）の戦歴は「失敗からの逆転」
   const r = hardSelect({ mood: 4, energy: 2, concern: 'work' }, {}, { seed: 'e' });
   assert.ok(r.episode && r.episode.who);
 });
+
+import { fitsHard, CONTRADICTS_HARD } from '../js/hard.js';
+
+test('言葉の精査：ハードモードと真逆の言葉・なぐさめだけの言葉は出ない', () => {
+  const seen = new Set();
+  for (let mood = 1; mood <= 5; mood++) for (let energy = 1; energy <= 3; energy++) for (let i = 0; i < 60; i++) {
+    const concern = ['none', 'work', 'people', 'money', 'health', 'self'][i % 6];
+    const r = hardSelect({ mood, energy, concern }, {}, { seed: `f${mood}${energy}-${i}` });
+    assert.ok(!CONTRADICTS_HARD.test(r.word.text), `${r.word.id}：${r.word.text}`);
+    assert.ok(fitsHard(r.word, energy), `${r.word.id} はハードモードに合わない`);
+    seen.add(r.word.id);
+  }
+  assert.ok(seen.size >= 120, `出る言葉の種類が少なすぎる（${seen.size}）`);
+});
+
+test('言葉の精査：ハードモードで使える言葉は700語以上ある', () => {
+  assert.ok(WORDS.filter((w) => fitsHard(w, 2)).length >= 700);
+  assert.ok(!fitsHard(WORDS.find((w) => w.id === 'o-manten'), 1), '「上がらなくていい」は出さない');
+});

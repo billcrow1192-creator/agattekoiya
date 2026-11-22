@@ -61,6 +61,23 @@ export function pickEpisode(mood, concern, seed) {
   return list[hashString(String(seed)) % list.length];
 }
 
+// ハードモードに合う言葉か（言葉の精査 v2.1.1。理由は docs/tone.md）
+// ①伝え方と真逆の言葉（「上がらなくていい」「がんばらない日」など）は出さない
+// ②行動の芯がない「なぐさめだけ」の言葉は出さない。ただしエネルギー「低い」の日は「休む」言葉を使う
+export const CONTRADICTS_HARD = /上がらなくていい|がんばらない|頑張らない|何もしな|そのままで|ままで大丈夫|ままでいい|泣いて|泣ける|泣いた|悲しんでいい|無理に前を向かなくて|ぼんやり|のんびり/;
+const ACTION_TAGS = ['small', 'prepare', 'learn', 'fun', 'rely', 'today'];
+export function fitsHard(w, energy = 2) {
+  if (CONTRADICTS_HARD.test(w.text)) return false;
+  const comfortOnly = w.tone.length === 1 && w.tone[0] === 'gentle' && !w.tags.some((t) => ACTION_TAGS.includes(t));
+  if (!comfortOnly) return true;
+  return energy === 1 && w.tags.includes('rest');
+}
+const UNFIT = { 1: null, 2: null, 3: null };
+function unfitIds(energy) {
+  if (!UNFIT[energy]) UNFIT[energy] = WORDS.filter((w) => !fitsHard(w, energy)).map((w) => w.id);
+  return UNFIT[energy];
+}
+
 // ハードモードで出す言葉の気分の扱い：
 // 落ちていても「休んでいいよ」だけで終わらせず、一歩を押す言葉を選びやすくする（ただし最大でも steady まで）
 export function toneMood(mood) {
@@ -85,7 +102,7 @@ export function hardSelect(state = {}, prefs = {}, opts = {}) {
   const energy = Math.min(3, Math.max(1, Math.round(Number(state.energy) || 2)));
   // 実際に落ちている日（気分1〜2）は「死」「殺」を含む言葉を出さない（元の気分では出ない言葉のため）
   const heavy = mood <= 2 ? WORDS.filter((w) => /死|殺/.test(w.text)).map((w) => w.id) : [];
-  const r = selectWords({ ...state, mood: toneMood(mood), energy }, prefs, { ...opts, exclude: [...(opts.exclude || []), ...heavy] });
+  const r = selectWords({ ...state, mood: toneMood(mood), energy }, prefs, { ...opts, exclude: [...(opts.exclude || []), ...heavy, ...unfitIds(energy)] });
   if (r.mode === 'safety') return { ...r, lead: SAFETY_LEAD };
   const seed = `${opts.seed || 'agattekoiya'}#${r.word.id}`;
   const concern = state.concern && state.concern !== 'none' ? state.concern : null;
