@@ -1,0 +1,13 @@
+{
+  "name": "agattekoiya",
+  "version": "1.0.0",
+  "description": "あがってこいや。— やさしい言葉が響かない日の、ハードモード",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "start": "node scripts/serve.mjs 8080",
+    "test": "node --test tests/hard.test.mjs",
+    "test:e2e": "node tests/e2e.mjs",
+    "icons": "node scripts/icons.mjs"
+  }
+}

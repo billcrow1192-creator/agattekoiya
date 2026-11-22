@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>相談窓口｜あがってこいや。</title>
+  <meta name="description" content="24時間つながる相談窓口の一覧。">
+  <meta name="theme-color" content="#0b0b0c">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Zen+Kaku+Gothic+New:wght@500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="tape" aria-hidden="true"></div>
+  <header class="top"><div class="narrow"><a class="logo" href="index.html">あがってこいや<span class="dot">。</span></a><a class="btn line" href="app.html" style="min-height:40px;font-size:14px;padding:0 14px">アプリへ</a></div></header>
+  <main class="narrow page">
+    <div class="calm-card">
+      <p class="calm-lead">ここでは、ハードモードを止める。<br>本当にしんどい時に必要なのは、叩かれることじゃない。話を聞いてもらうことだ。<br>うまく話せなくても大丈夫。「つらい」の一言からでいい。</p>
+      <div id="box"></div>
+    </div>
+    <p class="small muted" style="margin-top:20px">あがってこいや。は医療・カウンセリングの代わりではありません。</p>
+  </main>
+  <script type="module">
+    import { renderSafetyBox } from './js/safety-ui.js';
+    document.querySelector('#box').innerHTML = renderSafetyBox({ heading: '今すぐ話せる場所' });
+  </script>
+</body>
+</html>

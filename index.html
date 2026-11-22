@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>あがってこいや。｜やさしい言葉が響かない日の、ハードモード</title>
+  <meta name="description" content="やさしい言葉が響かない日がある。気分を選ぶと、1000語以上の言葉から一つ選んで、ハードモードで叩きこむ。今日の「指令」つき。登録なし・無料。">
+  <meta name="theme-color" content="#0b0b0c">
+  <meta property="og:title" content="あがってこいや。">
+  <meta property="og:description" content="やさしい言葉が響かない日の、ハードモード。">
+  <meta property="og:type" content="website">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Zen+Kaku+Gothic+New:wght@500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="tape" aria-hidden="true"></div>
+  <header class="top">
+    <div class="wrap">
+      <a class="logo" href="index.html">あがってこいや<span class="dot">。</span></a>
+      <a class="btn hot" href="app.html" style="min-height:40px;font-size:14px;padding:0 14px">はじめる</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <span class="kicker">かなりシビアモード</span>
+        <h1>あがって<br>こいや<span class="dot">。</span></h1>
+        <p class="lead">やさしい言葉が、響かない日がある。<br>そんな日は、叩いてやる。</p>
+        <p class="sub">気分を選ぶと、1000語以上の言葉から一つ選んで、ハードモードで叩きこむ。今日の「指令」つき。登録なし・無料・書いた内容は端末の外に出ない。</p>
+        <div class="cta">
+          <a class="btn hot" href="app.html">今すぐ叩きこまれる</a>
+          <a class="btn line" href="#demo">先に試す</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="wrap">
+        <p class="eyebrow">SAME WORDS / HARD DELIVERY</p>
+        <h2 class="h2">同じ言葉でも、<br><em>伝え方</em>で火がつく。</h2>
+        <div class="vs">
+          <div class="soft">
+            <span class="label">やさしい伝え方</span>
+            <p>千里の道も、足もとの一歩から始まる。</p>
+            <p>大丈夫。小さな一歩からでいいよ。</p>
+          </div>
+          <div class="hard">
+            <span class="label" style="color:var(--red)">ハードモード</span>
+            <p>ふつう？ ぬるいな。</p>
+            <p>千里の道も、足もとの一歩から始まる。</p>
+            <p><span class="badge">指令</span> 大きなことの最初の一歩を、今日一つだけやる。期限：今日中。</p>
+            <p style="color:var(--red);font-family:var(--display);font-weight:400">あがってこいや。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="wrap">
+        <p class="eyebrow">HOW IT WORKS</p>
+        <h2 class="h2">30秒で、<em>なにくそ</em>に変える。</h2>
+        <ol class="steps" style="padding:0">
+          <li><h3>状態を言え</h3><p>気分・エネルギー・何と戦ってるかを選ぶ。ひとことは書いても書かなくてもいい。</p></li>
+          <li><h3>叩きこまれろ</h3><p>論語・セネカ・ことわざから編集部の言葉まで1000語以上。今のあなたに効く一つを選んで、容赦なく伝える。</p></li>
+          <li><h3>やったら報告しろ</h3><p>今日の「指令」をやったら「やった」。連続日数とクリア数が積み上がる。</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="block" id="demo">
+      <div class="wrap">
+        <p class="eyebrow">TRY IT</p>
+        <h2 class="h2">今の気分は？</h2>
+        <div class="demo">
+          <div class="chips" id="demoMoods">
+            <button type="button" class="chip mood" data-demo="1"><span class="lv">1</span>落ちてる</button>
+            <button type="button" class="chip mood" data-demo="2"><span class="lv">2</span>しんどい</button>
+            <button type="button" class="chip mood" data-demo="3"><span class="lv">3</span>ふつう</button>
+            <button type="button" class="chip mood" data-demo="4"><span class="lv">4</span>いい感じ</button>
+            <button type="button" class="chip mood" data-demo="5"><span class="lv">5</span>上がってる</button>
+          </div>
+          <div id="demoResult" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="wrap">
+        <p class="eyebrow">RULES</p>
+        <h2 class="h2">叩くのは、<em>言い訳</em>だけだ。</h2>
+        <ul class="rules">
+          <li><b>人格は叩かない。</b>見た目も、能力も、存在も否定しない。叩くのは、止まっている手と言い訳だけ。</li>
+          <li><b>ガス欠の日は量を絞る。</b>エネルギー「低い」の日は、指令は一つだけ。気合いで押しつぶさない。</li>
+          <li><b>「きつすぎる」で、すぐゆるめる。</b>合わなかった言葉は二度と出さない。</li>
+          <li><b>本当に危ない時は、止まる。</b>命に関わる言葉を書いたら、ハードモードは止まり、24時間の相談窓口を出す。</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="wrap">
+        <p class="eyebrow">FOR YOU</p>
+        <h2 class="h2">こんな人のための<br>アプリだ。</h2>
+        <ul class="rules">
+          <li>「大丈夫だよ」と言われると、かえって動けなくなる。</li>
+          <li>きつく言われた方が「なにくそ」と燃えるタイプ。</li>
+          <li>言い訳している自分に、本当は気づいている。</li>
+        </ul>
+        <div class="cta" style="margin-top:30px;display:flex">
+          <a class="btn hot block" href="app.html" style="font-size:20px;min-height:64px">あがってこいや。</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap">
+      <div class="links">
+        <a href="app.html">アプリ</a>
+        <a href="safety.html">相談窓口</a>
+        <a href="privacy.html">プライバシーポリシー</a>
+        <a href="https://www.h3y.jp/" target="_blank" rel="noopener">運営：H3Y</a>
+      </div>
+      <p>このアプリは医療・カウンセリングの代わりではありません。命に関わる時は 119 へ。</p>
+      <p>© H3Y</p>
+    </div>
+  </footer>
+  <script type="module" src="js/lp.js"></script>
+</body>
+</html>

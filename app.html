@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>アプリ｜あがってこいや。</title>
+  <meta name="description" content="今の状態を選ぶと、ハードモードで言葉と指令が飛んでくる。">
+  <meta name="theme-color" content="#0b0b0c">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Zen+Kaku+Gothic+New:wght@500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="tape" aria-hidden="true"></div>
+  <header class="top">
+    <div class="narrow">
+      <a class="logo" href="index.html">あがってこいや<span class="dot">。</span></a>
+      <span class="streak" id="streak">🔥 0日</span>
+    </div>
+  </header>
+
+  <main class="narrow" style="padding-bottom:40px">
+    <section class="app-hero">
+      <h1>今の状態を言え。</h1>
+      <p>30秒でいい。言葉と、今日の指令を叩きこむ。</p>
+    </section>
+
+    <form id="checkin" class="panel" autocomplete="off">
+      <div class="field">
+        <h2 id="moodLabel">気分</h2>
+        <div class="chips" id="moods" role="group" aria-labelledby="moodLabel"></div>
+      </div>
+      <div class="field">
+        <h2 id="energyLabel">エネルギー</h2>
+        <div class="chips" role="group" aria-labelledby="energyLabel">
+          <button type="button" class="chip" data-energy="1" aria-pressed="false">低い</button>
+          <button type="button" class="chip" data-energy="2" aria-pressed="true">ふつう</button>
+          <button type="button" class="chip" data-energy="3" aria-pressed="false">高い</button>
+        </div>
+      </div>
+      <div class="field">
+        <h2 id="concernLabel">何と戦ってる？</h2>
+        <div class="chips" role="group" aria-labelledby="concernLabel">
+          <button type="button" class="chip" data-concern="work" aria-pressed="false">仕事</button>
+          <button type="button" class="chip" data-concern="people" aria-pressed="false">人間関係</button>
+          <button type="button" class="chip" data-concern="money" aria-pressed="false">お金</button>
+          <button type="button" class="chip" data-concern="health" aria-pressed="false">体と心</button>
+          <button type="button" class="chip" data-concern="self" aria-pressed="false">自分</button>
+          <button type="button" class="chip" data-concern="none" aria-pressed="true">特になし</button>
+        </div>
+      </div>
+      <div class="field">
+        <h2><label for="freeText">ひとこと（任意）</label></h2>
+        <textarea id="freeText" maxlength="400" placeholder="例：締め切りから逃げてる"></textarea>
+        <p class="note-lock">🔒 書いた内容は、この端末の外には一切送られない。</p>
+      </div>
+      <button class="btn hot block" id="goBtn" type="submit" style="margin-top:18px" disabled>叩きこんでくれ</button>
+    </form>
+
+    <div id="result" aria-live="polite"></div>
+
+    <section class="panel" aria-labelledby="logH" style="margin-top:26px">
+      <h2 id="logH">戦績</h2>
+      <div class="stats" id="stats"></div>
+      <ul class="log" id="logList"></ul>
+      <p class="xs muted" style="margin:14px 0 0" id="corpusInfo"></p>
+      <p style="margin:10px 0 0"><button type="button" class="btn line" id="clearBtn" style="min-height:40px;font-size:13px">記録を全部消す</button></p>
+    </section>
+
+    <p class="sos">本当にしんどい時は、ハードモードはいらない。<br><a href="safety.html">今すぐ話せる相談窓口</a></p>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
