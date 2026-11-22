@@ -7,6 +7,7 @@ import { sendReaction, sharingOn, setSharing } from './feedback.js';
 import { load, update, clearAll, uid } from './storage.js';
 import { renderSafetyBox } from './safety-ui.js';
 import { episodeHTML } from './episode-ui.js';
+import { parseFromOchimasen } from './handoff.js';
 
 const $ = (s, el = document) => el.querySelector(s);
 const $$ = (s, el = document) => [...el.querySelectorAll(s)];
@@ -55,7 +56,7 @@ function run(newCheckin) {
     ? { mood: form.mood, energy: form.energy, concern: form.concern, emotions: [], text: $('#freeText').value.trim() }
     : session.state;
   const seed = `${dateKey()}#${d.checkins.length}#${session.shown.length}`;
-  const r = hardSelect(state, d.prefs, { seed, exclude: session.shown, coach: coachId });
+  const r = hardSelect(state, d.prefs, { seed, exclude: session.shown, coach: coachId, eased: !!state.eased });
   if (newCheckin) {
     session = { result: r, id: uid(), shown: [], state };
     update((x) => {
@@ -110,6 +111,7 @@ function renderResult() {
       </div>
       ${r.episode ? episodeHTML(r.episode) : ''}
       <p class="closer">${esc(r.closer)}</p>
+      ${r.nuki ? `<p class="nuki">${esc(r.nuki)}</p>` : ''}
     </article>
     <div class="verdict" id="verdict">${c?.result ? verdictHTML(c.result) : ''}</div>
     <div class="actions">
@@ -140,7 +142,7 @@ function onAction(act) {
   if (act === 'ease') {
     // 合わない言葉は二度と出さず、今日は少しだけ手をゆるめる（エネルギー「低い」扱い）
     update((x) => { x.prefs = applyFeedback(x.prefs, r.word, 'dislike'); return x; });
-    session.state = { ...session.state, energy: 1, mood: Math.min(session.state.mood, 2) };
+    session.state = { ...session.state, energy: 1, mood: Math.min(session.state.mood, 2), eased: true }; // ゆるめた後は「……ようしらんけど。」も付けない
     toast(coach().ease);
     run(false);
   }
@@ -227,6 +229,12 @@ function init() {
   const share = $('#shareToggle');
   share.checked = sharingOn();
   share.addEventListener('change', () => { setSharing(share.checked); toast(share.checked ? '送る設定にした。協力に感謝する。' : '送らない設定にした。記録はこの端末の中だけ。'); });
+  // 「落ちません。」の「……ぬるい？」から来た人：答えを入力済みにして迎える
+  const from = parseFromOchimasen(location.hash);
+  if (from) {
+    Object.assign(form, from);
+    $('#fromOchi').hidden = false;
+  }
   $('#corpusInfo').textContent = `言葉 ${CORPUS_INFO.total}語（古典・ことわざ ${CORPUS_INFO.quotes}語）`;
   syncForm();
   renderHeader();

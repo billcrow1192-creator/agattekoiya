@@ -139,3 +139,25 @@ test('教官：選んだ教官の口調で出る。危ない時の言葉は教�
     assert.ok(!COACHES[id].closersHard.includes(r.closer), r.closer);
   }
 });
+
+// ───── 抜き「……ようしらんけど。」と、落ちません。からの受け渡し ─────
+test('強く言ったあとに「……ようしらんけど。」。ゆるめた後と危ない時には付けない', async () => {
+  const { NUKI } = await import('../js/hard.js');
+  for (let mood = 1; mood <= 5; mood++) {
+    const r = hardSelect({ mood, energy: 2 }, {}, { seed: `n${mood}` });
+    assert.equal(r.nuki, NUKI, '毎回出す決めゼリフ');
+  }
+  assert.equal(hardSelect({ mood: 2, energy: 1 }, {}, { seed: 'e', eased: true }).nuki, null, '「きつすぎる」の後は付けない');
+  assert.equal(hardSelect({ mood: 3, text: '死にたい' }).nuki, undefined, '危ない時は付けない');
+  for (const ng of NG_WORDS) assert.ok(!NUKI.includes(ng));
+});
+
+test('落ちません。から受け取るのは選択肢のコードだけ。おかしな値は捨てる', async () => {
+  const { parseFromOchimasen } = await import('../js/handoff.js');
+  assert.deepEqual(parseFromOchimasen('#from=ochimasen&m=3&e=3&c=money'), { mood: 3, energy: 3, concern: 'money' });
+  assert.deepEqual(parseFromOchimasen('#from=ochimasen&m=4'), { mood: 4, energy: 2, concern: 'none' });
+  assert.deepEqual(parseFromOchimasen('#from=ochimasen&m=2&e=9&c=<script>'), { mood: 2, energy: 2, concern: 'none' });
+  assert.equal(parseFromOchimasen('#m=3&e=2'), null, '落ちません。から以外は無視');
+  assert.equal(parseFromOchimasen('#from=ochimasen&m=7'), null);
+  assert.equal(parseFromOchimasen(''), null);
+});
