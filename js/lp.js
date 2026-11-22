@@ -25,7 +25,7 @@ document.querySelector('#demoMoods').addEventListener('click', (e) => {
       <p class="opener">${esc(r.opener)}</p>
       <blockquote class="word"><p class="word-text">${esc(r.word.text)}</p></blockquote>
       <div class="order"><div class="order-head"><span class="badge">指令</span><span class="deadline">${esc(r.deadline)}</span></div><p class="order-text">${esc(r.order)}</p></div>
-      ${episodeHTML(r.episode)}
+      ${episodeHTML(r.episode, r.coach)}
       <p class="closer">${esc(r.closer)}</p>
     </article>
     <p style="margin:14px 0 0"><a class="btn hot block" href="app.html">続きはアプリで</a></p>`;

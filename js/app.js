@@ -108,7 +108,7 @@ function renderResult() {
         <div class="order-head"><span class="badge">指令</span><span class="deadline">${esc(r.deadline)}</span></div>
         <p class="order-text">${esc(r.order)}</p>
       </div>
-      ${r.episode ? episodeHTML(r.episode) : ''}
+      ${r.episode ? episodeHTML(r.episode, r.coach) : ''}
       <p class="closer">${esc(r.closer)}</p>
     </article>
     <div class="verdict" id="verdict">${c?.result ? verdictHTML(c.result) : ''}</div>

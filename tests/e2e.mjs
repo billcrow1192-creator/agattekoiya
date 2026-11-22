@@ -135,6 +135,9 @@ try {
     await p.waitForSelector('#result .hard-card');
     const { COACHES } = await import('../js/coaches.js');
     const opener = (await p.textContent('#result .opener')).trim();
+    const { EPISODES } = await import('../js/data/episodes.js');
+    const fire = (await p.textContent('#result .ep-fire')).trim();
+    assert.ok(EPISODES.some((e) => e.fireF === fire), `戦歴の決め台詞も女性鬼教官の口調: ${fire}`);
     assert.ok(Object.values(COACHES.female.openers).flat().includes(opener), `女性鬼教官の一言: ${opener}`);
     // 教官ボタンで選び直せる
     await p.click('#coachBtn');

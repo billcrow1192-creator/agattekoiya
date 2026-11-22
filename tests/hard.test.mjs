@@ -139,3 +139,11 @@ test('教官：選んだ教官の口調で出る。危ない時の言葉は教�
     assert.ok(!COACHES[id].closersHard.includes(r.closer), r.closer);
   }
 });
+
+test('先人の戦歴：決め台詞は、男性鬼教官・女性鬼教官それぞれの口調がある', () => {
+  for (const e of EPISODES) {
+    assert.ok(e.fire && e.fireF, `${e.id} の決め台詞`);
+    assert.notEqual(e.fire, e.fireF, e.id);
+    for (const ng of NG_WORDS) assert.ok(!e.fireF.includes(ng), `${e.id} に「${ng}」`);
+  }
+});
