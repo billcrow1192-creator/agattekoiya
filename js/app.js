@@ -1,6 +1,9 @@
 // あがってこいや。アプリ本体（画面の操作だけ。言葉選びは engine.js、伝え方は hard.js）
 import { findWord, applyFeedback, markShown, streak, dateKey, CORPUS_INFO } from './engine.js';
-import { hardSelect, DONE, SKIP, EASE } from './hard.js';
+import { hardSelect } from './hard.js';
+import { getCoach, REACTIONS } from './coaches.js';
+import { todayCoach, lastCoach, showCoachPicker, coachChipHTML } from './coach-ui.js';
+import { sendReaction } from './feedback.js';
 import { load, update, clearAll, uid } from './storage.js';
 import { renderSafetyBox } from './safety-ui.js';
 import { episodeHTML } from './episode-ui.js';
@@ -9,6 +12,8 @@ const $ = (s, el = document) => el.querySelector(s);
 const $$ = (s, el = document) => [...el.querySelectorAll(s)];
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const pickOf = (arr) => arr[Math.floor(Math.random() * arr.length)];
+let coachId = todayCoach() || lastCoach();
+const coach = () => getCoach(coachId);
 
 const MOODS = [
   { v: 1, t: '落ちてる' }, { v: 2, t: 'しんどい' }, { v: 3, t: 'ふつう' }, { v: 4, t: 'いい感じ' }, { v: 5, t: '上がってる' },
@@ -50,7 +55,7 @@ function run(newCheckin) {
     ? { mood: form.mood, energy: form.energy, concern: form.concern, emotions: [], text: $('#freeText').value.trim() }
     : session.state;
   const seed = `${dateKey()}#${d.checkins.length}#${session.shown.length}`;
-  const r = hardSelect(state, d.prefs, { seed, exclude: session.shown });
+  const r = hardSelect(state, d.prefs, { seed, exclude: session.shown, coach: coachId });
   if (newCheckin) {
     session = { result: r, id: uid(), shown: [], state };
     update((x) => {
@@ -91,6 +96,14 @@ function renderResult() {
         <p class="word-text">${esc(w.text)}</p>
         <footer class="word-src">${quoteSource(w)}</footer>
       </blockquote>
+      <div class="react">
+        <p class="react-q">この言葉、どうだ？</p>
+        <div class="react-row">
+          <button type="button" class="react-btn agree" data-react="agree" aria-pressed="false">${REACTIONS.agree}</button>
+          <button type="button" class="react-btn disagree" data-react="disagree" aria-pressed="false">${REACTIONS.disagree}</button>
+        </div>
+        <p class="react-say" id="reactSay" aria-live="polite"></p>
+      </div>
       <div class="order">
         <div class="order-head"><span class="badge">指令</span><span class="deadline">${esc(r.deadline)}</span></div>
         <p class="order-text">${esc(r.order)}</p>
@@ -109,8 +122,8 @@ function renderResult() {
 
 function verdictHTML(kind) {
   return kind === 'done'
-    ? `<p class="v-done">✔ ${esc(pickOf(DONE))}</p>`
-    : `<p class="v-skip">${esc(pickOf(SKIP))}</p>`;
+    ? `<p class="v-done">✔ ${esc(pickOf(coach().done))}</p>`
+    : `<p class="v-skip">${esc(pickOf(coach().skip))}</p>`;
 }
 
 function onAction(act) {
@@ -128,9 +141,29 @@ function onAction(act) {
     // 合わない言葉は二度と出さず、今日は少しだけ手をゆるめる（エネルギー「低い」扱い）
     update((x) => { x.prefs = applyFeedback(x.prefs, r.word, 'dislike'); return x; });
     session.state = { ...session.state, energy: 1, mood: Math.min(session.state.mood, 2) };
-    toast(EASE);
+    toast(coach().ease);
     run(false);
   }
+}
+
+// 言葉への反応：「その通りっす」「なんか違うっす」
+// 端末の中に記録して、戦績に「刺さった率」を出す。合わない言葉は二度と出さない。
+// （匿名の集計は js/feedback.js。送る先が決まるまでは何も送らない）
+function onReact(kind) {
+  const r = session.result;
+  if (!r || r.mode !== 'normal') return;
+  const s = session.state;
+  update((x) => {
+    x.reactions = (x.reactions || []).filter((v) => !(v.checkinId === session.id && v.wordId === r.word.id));
+    x.reactions.push({ at: new Date().toISOString(), checkinId: session.id, wordId: r.word.id, react: kind, coach: coachId, mood: s.mood, energy: s.energy, concern: s.concern });
+    x.prefs = applyFeedback(x.prefs, r.word, kind === 'agree' ? 'like' : 'dislike');
+    return x;
+  });
+  sendReaction({ wordId: r.word.id, react: kind, coach: coachId, mood: s.mood, energy: s.energy, concern: s.concern });
+  $$('[data-react]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.react === kind)));
+  $('#reactSay').textContent = pickOf(kind === 'agree' ? coach().agree : coach().disagree);
+  renderLog();
+  if (kind === 'disagree') setTimeout(() => run(false), 1300);
 }
 
 function fmtDate(iso) {
@@ -141,17 +174,24 @@ function fmtDate(iso) {
 function renderLog() {
   const d = load();
   const done = d.checkins.filter((c) => c.result === 'done').length;
+  const rs = d.reactions || [];
+  const agree = rs.filter((v) => v.react === 'agree').length;
+  const rate = rs.length ? `${Math.round((agree / rs.length) * 100)}%` : '—';
   $('#stats').innerHTML = `
     <div class="stat"><div class="n">${streak(d.checkins)}</div><div class="l">日連続</div></div>
-    <div class="stat"><div class="n">${done}</div><div class="l">指令クリア</div></div>
+    <div class="stat"><div class="n">${done}</div><div class="l">クリア</div></div>
+    <div class="stat"><div class="n">${rate}</div><div class="l">刺さった率</div></div>
     <div class="stat"><div class="n">${d.checkins.length}</div><div class="l">回 来た</div></div>`;
+  $('#reactNote').textContent = rs.length ? `「${REACTIONS.agree}」${agree}回／「${REACTIONS.disagree}」${rs.length - agree}回` : `言葉に「${REACTIONS.agree}」か「${REACTIONS.disagree}」で答えると、刺さった率が出る。`;
   const items = [...d.checkins].reverse().slice(0, 10);
   $('#logList').innerHTML = items.length
     ? items.map((c) => {
       const w = findWord(c.wordId);
       const m = MOODS.find((x) => x.v === c.mood);
       const res = c.result === 'done' ? '<span class="tag ok">クリア</span>' : c.result === 'skip' ? '<span class="tag">見送り</span>' : '';
-      return `<li><div class="log-meta"><span>${fmtDate(c.at)}</span><span>${esc(m?.t || '')}</span>${res}</div>${w ? `<p class="log-word">${esc(w.text)}</p>` : ''}</li>`;
+      const rv = (d.reactions || []).filter((v) => v.checkinId === c.id).at(-1);
+      const rt = rv ? `<span class="tag ${rv.react === 'agree' ? 'ok' : ''}">${rv.react === 'agree' ? '刺さった' : '違った'}</span>` : '';
+      return `<li><div class="log-meta"><span>${fmtDate(c.at)}</span><span>${esc(m?.t || '')}</span>${res}${rt}</div>${w ? `<p class="log-word">${esc(w.text)}</p>` : ''}</li>`;
     }).join('')
     : '<li class="empty">まだ何もない。今日から始めろ。</li>';
 }
@@ -159,6 +199,8 @@ function renderLog() {
 function init() {
   $('#moods').innerHTML = [...MOODS].reverse().map((m) => `<button type="button" class="chip mood" data-mood="${m.v}" aria-pressed="false"><span class="lv">${m.v}</span>${m.t}</button>`).join('');
   document.addEventListener('click', (e) => {
+    const rb = e.target.closest('[data-react]');
+    if (rb) { onReact(rb.dataset.react); return; }
     const b = e.target.closest('[data-mood],[data-energy],[data-concern],[data-act]');
     if (!b) return;
     if (b.dataset.mood) form.mood = Number(b.dataset.mood);
@@ -175,6 +217,13 @@ function init() {
     renderResult(); renderHeader(); renderLog(); toast('全部消した。ゼロからだ。');
     b.dataset.armed = ''; b.textContent = '記録を全部消す';
   });
+  // 今日の教官
+  const chip = $('#coachBtn');
+  const paintChip = () => { chip.innerHTML = coachChipHTML(coachId); chip.className = `coach-chip ${coachId}`; };
+  paintChip();
+  const pick = (closable) => showCoachPicker({ closable, onPick: (id) => { coachId = id; paintChip(); if (session.result) { session.result = null; renderResult(); } } });
+  chip.addEventListener('click', () => pick(true));
+  if (!todayCoach()) pick(false);
   $('#corpusInfo').textContent = `言葉 ${CORPUS_INFO.total}語（古典・ことわざ ${CORPUS_INFO.quotes}語）`;
   syncForm();
   renderHeader();

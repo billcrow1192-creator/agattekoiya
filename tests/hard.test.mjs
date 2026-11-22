@@ -109,3 +109,33 @@ test('言葉の精査：ハードモードで使える言葉は700語以上あ�
   assert.ok(WORDS.filter((w) => fitsHard(w, 2)).length >= 700);
   assert.ok(!fitsHard(WORDS.find((w) => w.id === 'o-manten'), 1), '「上がらなくていい」は出さない');
 });
+
+import { COACHES, REACTIONS } from '../js/coaches.js';
+
+test('教官：男性・女性のどちらの口調にも、人格否定・NG語がない', () => {
+  for (const c of Object.values(COACHES)) {
+    const lines = [c.intro, c.sample, ...Object.values(c.openers).flat(), ...Object.values(c.jabs).flat(), ...c.lowEnergy, ...c.closers, ...c.closersHard, ...c.done, ...c.skip, c.ease, ...c.agree, ...c.disagree];
+    for (const line of lines) for (const ng of NG_WORDS) assert.ok(!line.includes(ng), `${c.id}「${line}」に「${ng}」`);
+    for (let m = 1; m <= 5; m++) assert.ok(c.openers[m].length >= 3, `${c.id} 気分${m}`);
+    for (const k of ['work', 'people', 'money', 'health', 'self']) assert.ok(c.jabs[k].length >= 2, `${c.id} ${k}`);
+  }
+  assert.equal(REACTIONS.agree, 'その通りっす');
+  assert.equal(REACTIONS.disagree, 'なんか違うっす');
+});
+
+test('教官：選んだ教官の口調で出る。危ない時の言葉は教官に関係なく同じ', () => {
+  for (const id of ['male', 'female']) {
+    const r = hardSelect({ mood: 3, energy: 2, concern: 'work' }, {}, { seed: 'c', coach: id });
+    assert.equal(r.coach, id);
+    assert.ok(Object.values(COACHES[id].openers).flat().includes(r.opener));
+    assert.ok([...COACHES[id].closers, ...COACHES[id].closersHard].includes(r.closer));
+    const s = hardSelect({ mood: 3, energy: 2, text: '消えたい' }, {}, { coach: id });
+    assert.equal(s.mode, 'safety');
+    assert.match(s.lead, /ハードモードを止める/);
+  }
+  // 落ちている日は、どちらの教官でもいちばん厳しい締めを出さない
+  for (const id of ['male', 'female']) for (let i = 0; i < 100; i++) {
+    const r = hardSelect({ mood: 1, energy: 2 }, {}, { seed: `l${i}`, coach: id });
+    assert.ok(!COACHES[id].closersHard.includes(r.closer), r.closer);
+  }
+});

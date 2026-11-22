@@ -11,7 +11,15 @@ const errors = [];
 let passed = 0;
 
 async function newPage(opts = {}) {
-  const ctx = await browser.newContext({ locale: 'ja-JP', ...devices['Pixel 7'], ...opts });
+  const { pickCoach, ...ctxOpts } = opts;
+  const ctx = await browser.newContext({ locale: 'ja-JP', ...devices['Pixel 7'], ...ctxOpts });
+  // 「今日の教官は…」は専用のテスト以外では選び済みにしておく
+  if (!pickCoach) {
+    await ctx.addInitScript(() => {
+      const d = new Date();
+      try { localStorage.setItem('agattekoiya:coach', JSON.stringify({ id: 'male', date: `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}` })); } catch { /* noop */ }
+    });
+  }
   const page = await ctx.newPage();
   page.on('pageerror', (e) => errors.push(`pageerror: ${e.message}`));
   page.on('console', (m) => { if (m.type() === 'error' && !/Failed to load resource/.test(m.text())) errors.push(`console: ${m.text()}`); });
@@ -58,7 +66,7 @@ try {
   await step('やった → クリアが数えられる・連続日数', async () => {
     await page.click('[data-act="done"]');
     await page.waitForSelector('#verdict .v-done');
-    assert.match(await page.textContent('#stats'), /1\s*指令クリア/);
+    assert.match(await page.textContent('#stats'), /1\s*クリア/);
     assert.match(await page.textContent('#streak'), /1日連続/);
   });
 
@@ -104,6 +112,58 @@ try {
     assert.match(await page.textContent('#logList'), /まだ何もない/);
   });
   await ctx.close();
+
+  await step('最初に「今日の教官は…」→ 女性鬼教官を選ぶと、その口調で表紙・アプリへ', async () => {
+    const { ctx: c, page: p } = await newPage({ pickCoach: true });
+    await p.goto(`${base}/index.html`);
+    await p.waitForSelector('.coach-pick');
+    assert.match(await p.textContent('.cp-title'), /今日の教官は/);
+    await shot(p, 'coach-pick');
+    await p.click('[data-coach="female"]');
+    await p.waitForSelector('.cp-intro-line');
+    assert.match(await p.textContent('.cp-intro-line'), /私/);
+    await p.waitForSelector('.coach-pick', { state: 'detached' });
+    assert.match(await p.textContent('#coachBtn'), /女性鬼教官/);
+    // アプリでは選び直さなくていい
+    await p.goto(`${base}/app.html`);
+    assert.equal(await p.$('.coach-pick'), null, '同じ日はもう聞かない');
+    await p.click('[data-mood="3"]');
+    await p.click('#goBtn');
+    await p.waitForSelector('#result .hard-card');
+    const { COACHES } = await import('../js/coaches.js');
+    const opener = (await p.textContent('#result .opener')).trim();
+    assert.ok(Object.values(COACHES.female.openers).flat().includes(opener), `女性鬼教官の一言: ${opener}`);
+    // 教官ボタンで選び直せる
+    await p.click('#coachBtn');
+    await p.click('[data-coach="male"]');
+    await p.waitForSelector('.coach-pick', { state: 'detached' });
+    assert.match(await p.textContent('#coachBtn'), /男性鬼教官/);
+    await c.close();
+  });
+
+  await step('言葉への反応：「その通りっす」で刺さった率、「なんか違うっす」で別の言葉に', async () => {
+    const { ctx: c, page: p } = await newPage();
+    await p.goto(`${base}/app.html`);
+    await p.click('[data-mood="4"]');
+    await p.click('#goBtn');
+    await p.waitForSelector('#result .react');
+    await p.click('[data-react="agree"]');
+    assert.match(await p.textContent('#reactSay'), /.+/);
+    assert.match(await p.textContent('#stats'), /100%\s*刺さった率/);
+    // 同じ言葉で押し直すと、反応は上書き（気が変わってもいい）。別の言葉で「なんか違うっす」
+    const first = await p.textContent('#result .word-text');
+    await p.click('[data-act="more"]');
+    await p.waitForFunction((b) => document.querySelector('#result .word-text')?.textContent !== b, first);
+    const before = await p.textContent('#result .word-text');
+    await p.click('[data-react="disagree"]');
+    await p.waitForFunction((b) => document.querySelector('#result .word-text')?.textContent !== b, before);
+    const d = await p.evaluate(() => JSON.parse(localStorage.getItem('agattekoiya:v1')));
+    assert.equal(d.reactions.length, 2);
+    assert.equal(d.prefs.disliked.length, 1, '違った言葉は二度と出さない');
+    assert.match(await p.textContent('#reactNote'), /その通りっす」1回／「なんか違うっす」1回/);
+    await shot(p, 'app-react');
+    await c.close();
+  });
 
   await step('相談窓口・プライバシー・404', async () => {
     const { ctx: c, page: p } = await newPage();
