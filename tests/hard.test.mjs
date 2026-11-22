@@ -76,15 +76,15 @@ test('先人の戦歴：全部に出典URLがあり、決まり文句にNG語が
     assert.ok(!ids.has(e.id), e.id); ids.add(e.id);
     for (const k of ['who', 'role', 'story', 'fire', 'source']) assert.ok(e[k], `${e.id} の ${k}`);
     if (!e.heard) assert.match(e.url, /^https:\/\//, e.id);
-    assert.ok(['comeback', 'grind', 'start'].includes(e.kind), e.id);
+    assert.ok(['comeback', 'grind', 'start', 'rest'].includes(e.kind), e.id);
     for (const ng of NG_WORDS) assert.ok(!e.fire.includes(ng) && !e.story.includes(ng), `${e.id} に「${ng}」`);
   }
 });
 
-test('落ちている日（気分1〜2）の戦歴は「失敗からの逆転」だけ', () => {
+test('落ちている日（気分1〜2）の戦歴は「失敗からの逆転」と「整える」だけ', () => {
   for (const mood of [1, 2]) for (let i = 0; i < 50; i++) {
     for (const concern of [null, 'work', 'money', 'self', 'people', 'health']) {
-      assert.equal(pickEpisode(mood, concern, `s${i}`).kind, 'comeback');
+      assert.ok(['comeback', 'rest'].includes(pickEpisode(mood, concern, `s${i}`).kind));
     }
   }
   const r = hardSelect({ mood: 4, energy: 2, concern: 'work' }, {}, { seed: 'e' });
@@ -168,4 +168,15 @@ test('落ちません。から受け取るのは選択肢のコードだけ。�
   assert.equal(parseFromOchimasen('#m=3&e=2'), null, '落ちません。から以外は無視');
   assert.equal(parseFromOchimasen('#from=ochimasen&m=7'), null);
   assert.equal(parseFromOchimasen(''), null);
+});
+
+test('レパートリー：戦歴・教本は30件以上。教官の言葉は口調ごとに100以上', async () => {
+  assert.ok(EPISODES.length >= 30, `戦歴・教本 ${EPISODES.length}件`);
+  assert.ok(EPISODES.filter((e) => e.label === '教本').length >= 10, '教本（7つの習慣・ナポレオン・ヒル）');
+  for (const c of Object.values(COACHES)) {
+    const n = Object.values(c.openers).flat().length + Object.values(c.jabs).flat().length + c.closers.length + c.closersHard.length;
+    assert.ok(n >= 90, `${c.id} ${n}`);
+  }
+  const ids = new Set(EPISODES.map((e) => e.id));
+  assert.equal(ids.size, EPISODES.length, 'id の重複なし');
 });

@@ -1,6 +1,7 @@
 // 先人の戦歴：ハードモードで進んだ人のエピソード（事実の要約は編集部の言葉。本人の言葉の直接引用はしない）
 // fire は男性鬼教官、fireF は女性鬼教官の口調の決め台詞
-// kind: comeback（失敗・拒絶からの逆転）/ grind（毎日の積み上げ）/ start（踏み出す）
+// kind: comeback（失敗・拒絶からの逆転）/ grind（毎日の積み上げ）/ start（踏み出す）/ rest（整える）
+// label：画面のバッジ（なければ「戦歴」）。本の教えは「教本」として、本文を引用せず編集部の言葉で要約する
 // 気分1〜2の日は comeback だけを出す（「すごい人と比べて落ちる」を避ける）
 // 数字は報道・本人の語りによる。諸説あるものは story に「と伝わる」「諸説」と書く。確認日：2026-11
 export const EPISODES = [
@@ -107,5 +108,143 @@ export const EPISODES = [
     fireF: '仕組みを考える前に、まず一人に会いなさい。',
     source: 'Paul Graham「Do Things that Don’t Scale」（2013年）',
     url: 'https://paulgraham.com/ds.html',
+  },
+  // ───── 追加（v2）：人物の戦歴 ─────
+  {
+    id: 'ando-momofuku', who: '安藤百福', role: '日清食品 創業者', kind: 'comeback', concerns: ['work', 'money', 'self'],
+    story: '戦争で事業の拠点をほとんど失ったあと、48歳で、自宅の裏庭に建てた小さな研究小屋で試作をくり返し、世界初のインスタントラーメン「チキンラーメン」を生んだ。61歳でカップヌードルも開発した。',
+    fire: '年齢を言い訳にするな。今日、試作を一つしろ。',
+    fireF: '年齢を言い訳にしないで。今日、試作を一つしなさい。',
+    source: 'nippon.com／政府広報オンライン ほか',
+    url: 'https://www.gov-online.go.jp/hlj/ja/november_2024/november_2024-05.html',
+  },
+  {
+    id: 'matsushita', who: '松下幸之助', role: 'パナソニック 創業者', kind: 'comeback', concerns: ['work', 'money'],
+    story: '独立して作った電灯用の改良ソケットは、ほとんど売れなかった。質屋に通うほどの資金難の中、扇風機の部品の注文で持ち直し、1918年、23歳で妻と義弟と3人で会社を始めた。',
+    fire: '最初の商品が売れなくても、終わりじゃない。次の注文を取りに行け。',
+    fireF: '最初の商品が売れなくても、終わりじゃないわ。次の注文を取りに行きなさい。',
+    source: 'パナソニック「パナソニックの歴史ものがたり Episode 07」',
+    url: 'https://news.panasonic.com/jp/stories/18404',
+  },
+  {
+    id: 'stephen-king', who: 'スティーブン・キング', role: '作家', kind: 'comeback', concerns: ['work', 'self'],
+    story: 'デビュー作『キャリー』の書きかけの原稿を、出来が悪いと思って捨ててしまった。妻のタビサがそれを拾い上げて続きを書くよう勧め、それが最初のベストセラーになった。',
+    fire: '自分で捨てる前に、一人に見せろ。',
+    fireF: '自分で捨てる前に、一人に見せなさい。',
+    source: 'スティーブン・キング『書くことについて（On Writing）』の記述として各紙が紹介',
+    url: 'https://www.mentalfloss.com/literature/authors/how-stephen-kings-wife-saved-carrie-and-launched-his-career',
+  },
+  {
+    id: 'blakely', who: 'サラ・ブレイクリー', role: 'スパンクス 創業者', kind: 'start', concerns: ['self', 'work'],
+    story: '子どものころ、父は夕食のたびに「今週は何に失敗した？」と聞き、失敗の話がないとがっかりしたという。失敗とは結果ではなく「挑戦しないこと」だと学んだ、と本人が語っている。',
+    fire: '今週、何に失敗した？ 答えられないなら、まだ挑戦が足りない。',
+    fireF: '今週、何に失敗したの？ 答えられないなら、まだ挑戦が足りないわ。',
+    source: 'Business Insider ほか（本人のインタビュー）',
+    url: 'https://www.businessinsider.in/the-surprising-dinner-table-question-that-got-billionaire-sara-blakely-to-where-she-is-today/amp_articleshow/46798916.cms',
+  },
+  {
+    id: 'buffett', who: 'ウォーレン・バフェット', role: '投資家', kind: 'comeback', concerns: ['work', 'money', 'self'],
+    story: 'ハーバード・ビジネススクールの面接で落とされた。行き先を探してコロンビア大学に進み、そこで師となるベンジャミン・グレアムに学んだ。のちに、落ちたことが人生でいちばん大きな転機だったと振り返っている。',
+    fire: '落ちた先に、本当の師がいることもある。次を探せ。',
+    fireF: '落ちた先に、本当の師がいることもあるの。次を探しなさい。',
+    source: 'CNBC（2017年）',
+    url: 'https://www.cnbc.com/2017/01/31/hbs-rejection-was-the-best-thing-that-ever-happened-to-warren-buffett.html',
+  },
+  {
+    id: 'ichiro', who: 'イチロー', role: '野球選手', kind: 'grind', concerns: ['work', 'self'],
+    story: '2013年、日米通算4000本安打を打った日の会見で、その裏で8000回以上、悔しい思いをしてきた、という趣旨を語った。',
+    fire: '打った数の裏に、倍の凡打がある。今日も打席に立て。',
+    fireF: '打った数の裏に、倍の凡打があるの。今日も打席に立ちなさい。',
+    source: 'Sportiva（2013年）',
+    url: 'https://sportiva.shueisha.co.jp/clm/baseball/mlb/2013/12/17/22_1/?page=3',
+  },
+  {
+    id: 'disney', who: 'ウォルト・ディズニー', role: 'ディズニー 創業者', kind: 'comeback', concerns: ['work', 'money'],
+    story: '最初のアニメ会社「ラフォグラム」（カンザスシティ）は1923年に倒産した。作りかけのフィルムを持ってハリウッドへ移り、兄と新しいスタジオを始めた。',
+    fire: '会社がつぶれても、作りかけは持っていける。次の街へ行け。',
+    fireF: '会社がつぶれても、作りかけは持っていけるわ。次の街へ行きなさい。',
+    source: 'ミズーリ大学カンザスシティ校 特別コレクション ほか',
+    url: 'https://info.umkc.edu/specialcollections/archives/3173',
+  },
+  // ───── 追加（v2）：教本（本の教えを、編集部の言葉で短くまとめたもの。本文の引用ではない）─────
+  {
+    id: 'covey-1', label: '教本', who: '『7つの習慣』', role: 'スティーブン・R・コヴィー（1989年）', kind: 'start', concerns: ['self', 'people', 'work'],
+    story: '第1の習慣「主体的である」。起きた出来事は選べなくても、それにどう反応するかは自分で選べる、という教え。',
+    fire: '環境のせいにするな。どう動くかは、自分で選べ。',
+    fireF: '環境のせいにしないで。どう動くかは、自分で選びなさい。',
+    source: 'スティーブン・R・コヴィー『7つの習慣』（要約は編集部）',
+    url: 'https://en.wikipedia.org/wiki/The_7_Habits_of_Highly_Effective_People',
+  },
+  {
+    id: 'covey-2', label: '教本', who: '『7つの習慣』', role: 'スティーブン・R・コヴィー（1989年）', kind: 'start', concerns: ['self', 'work'],
+    story: '第2の習慣「終わりを思い描くことから始める」。どこにたどり着きたいかを先に決めてから、今日の行動を決める、という教え。',
+    fire: 'ゴールを決めずに走るな。まず終わりの姿を書け。',
+    fireF: 'ゴールを決めずに走らないで。まず終わりの姿を書きなさい。',
+    source: 'スティーブン・R・コヴィー『7つの習慣』（要約は編集部）',
+    url: 'https://en.wikipedia.org/wiki/The_7_Habits_of_Highly_Effective_People',
+  },
+  {
+    id: 'covey-3', label: '教本', who: '『7つの習慣』', role: 'スティーブン・R・コヴィー（1989年）', kind: 'grind', concerns: ['work', 'self'],
+    story: '第3の習慣「最優先事項を優先する」。急ぎの用事に追われず、「緊急ではないが重要なこと」に先に時間を取る、という教え。',
+    fire: '急ぎの用事に、大事なことを食われるな。',
+    fireF: '急ぎの用事に、大事なことを食われないで。',
+    source: 'スティーブン・R・コヴィー『7つの習慣』（要約は編集部）',
+    url: 'https://en.wikipedia.org/wiki/The_7_Habits_of_Highly_Effective_People',
+  },
+  {
+    id: 'covey-4', label: '教本', who: '『7つの習慣』', role: 'スティーブン・R・コヴィー（1989年）', kind: 'start', concerns: ['people', 'work'],
+    story: '第4の習慣「Win-Winを考える」。どちらかが勝ってどちらかが負けるのではなく、両方が得をする道を探す、という教え。',
+    fire: '相手を負かすな。両方が勝つ道を探せ。',
+    fireF: '相手を負かさないで。両方が勝つ道を探しなさい。',
+    source: 'スティーブン・R・コヴィー『7つの習慣』（要約は編集部）',
+    url: 'https://en.wikipedia.org/wiki/The_7_Habits_of_Highly_Effective_People',
+  },
+  {
+    id: 'covey-5', label: '教本', who: '『7つの習慣』', role: 'スティーブン・R・コヴィー（1989年）', kind: 'start', concerns: ['people'],
+    story: '第5の習慣「まず理解に徹し、そして理解される」。わかってもらう前に、まず相手をわかろうとして聞く、という教え。',
+    fire: '言い返す前に、まず最後まで聞け。',
+    fireF: '言い返す前に、まず最後まで聞きなさい。',
+    source: 'スティーブン・R・コヴィー『7つの習慣』（要約は編集部）',
+    url: 'https://en.wikipedia.org/wiki/The_7_Habits_of_Highly_Effective_People',
+  },
+  {
+    id: 'covey-7', label: '教本', who: '『7つの習慣』', role: 'スティーブン・R・コヴィー（1989年）', kind: 'rest', concerns: ['health', 'work', 'self'],
+    story: '第7の習慣「刃を研ぐ」。のこぎりで木を切り続けて疲れ果てた人が、「刃を研ぐ暇なんかない」と言って切り続ける話がある。体・心・頭・人とのつながりを、定期的に整える時間を取る、という教え。',
+    fire: '休まず切り続けるな。刃を研ぐ時間を取れ。',
+    fireF: '休まず切り続けないで。刃を研ぐ時間を取りなさい。',
+    source: 'スティーブン・R・コヴィー『7つの習慣』（要約は編集部）',
+    url: 'https://en.wikipedia.org/wiki/The_7_Habits_of_Highly_Effective_People',
+  },
+  {
+    id: 'hill-gold', label: '教本', who: 'ナポレオン・ヒル', role: '『思考は現実化する』（1937年）', kind: 'comeback', concerns: ['work', 'money', 'self'],
+    story: '金を掘っていた若者ダービーは、鉱脈を見失ってあきらめ、機械を売り払った。買い取った人が専門家に相談して掘り進めると、わずか3フィート（約90cm）先に金の鉱脈があった。',
+    fire: 'やめる前に、もう一掘りだ。',
+    fireF: 'やめる前に、もう一掘りしなさい。',
+    source: 'ナポレオン・ヒル『思考は現実化する（Think and Grow Rich）』（要約は編集部）',
+    url: 'https://sacred-texts.com/nth/tgr/index.htm',
+  },
+  {
+    id: 'hill-desire', label: '教本', who: 'ナポレオン・ヒル', role: '『思考は現実化する』（1937年）', kind: 'start', concerns: ['money', 'self', 'work'],
+    story: 'ヒルは、成功の出発点を「自分が何を欲しいのかをはっきり決め、強く願い続けること」だとした。ぼんやりした希望では、人は動けないという。',
+    fire: 'ぼんやり願うな。欲しいものを一行で決めろ。',
+    fireF: 'ぼんやり願わないで。欲しいものを一行で決めなさい。',
+    source: 'ナポレオン・ヒル『思考は現実化する（Think and Grow Rich）』（要約は編集部）',
+    url: 'https://sacred-texts.com/nth/tgr/index.htm',
+  },
+  {
+    id: 'hill-mastermind', label: '教本', who: 'ナポレオン・ヒル', role: '『思考は現実化する』（1937年）', kind: 'start', concerns: ['people', 'work'],
+    story: '同じ目的を持つ仲間が集まり、知恵と力を出し合う関係を、ヒルは「マスターマインド」と呼んだ。一人の頭より、目的を共有する何人かの頭の方が遠くへ行ける、という教え。',
+    fire: '一人で戦うな。同じ目的の仲間を一人つくれ。',
+    fireF: '一人で戦わないで。同じ目的の仲間を一人つくりなさい。',
+    source: 'ナポレオン・ヒル『思考は現実化する（Think and Grow Rich）』（要約は編集部）',
+    url: 'https://sacred-texts.com/nth/tgr/index.htm',
+  },
+  {
+    id: 'hill-persist', label: '教本', who: 'ナポレオン・ヒル', role: '『思考は現実化する』（1937年）', kind: 'comeback', concerns: ['work', 'self'],
+    story: 'ヒルは、多くの人が「一時的な敗北」を「最後の失敗」と思いこんでやめてしまう、と書いた。粘り強さは、意志の強さではなく、続ける習慣でつくれる、という教え。',
+    fire: '一回の負けを、最後の負けにするな。',
+    fireF: '一回の負けを、最後の負けにしないで。',
+    source: 'ナポレオン・ヒル『思考は現実化する（Think and Grow Rich）』（要約は編集部）',
+    url: 'https://sacred-texts.com/nth/tgr/index.htm',
   },
 ];

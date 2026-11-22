@@ -30,9 +30,9 @@ export const NG_WORDS = ['死', '殺', '甘え', 'クズ', 'ゴミ', 'バカ', '
 
 const pick = (arr, seed) => arr[hashString(String(seed)) % arr.length];
 
-// 先人の戦歴を一つ選ぶ。落ちている日（気分1〜2）は「失敗からの逆転」だけ
+// 先人の戦歴を一つ選ぶ。落ちている日（気分1〜2）は「失敗からの逆転」と「整える」だけ
 export function pickEpisode(mood, concern, seed) {
-  const pool = EPISODES.filter((e) => mood >= 3 || e.kind === 'comeback');
+  const pool = EPISODES.filter((e) => mood >= 3 || e.kind === 'comeback' || e.kind === 'rest');
   const matched = concern ? pool.filter((e) => e.concerns.includes(concern)) : [];
   const list = matched.length ? matched : pool;
   return list[hashString(String(seed)) % list.length];
