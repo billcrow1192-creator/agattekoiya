@@ -77,7 +77,11 @@ test('先人の戦歴：全部に出典URLがあり、決まり文句にNG語が
     for (const k of ['who', 'role', 'story', 'fire', 'source']) assert.ok(e[k], `${e.id} の ${k}`);
     if (!e.heard) assert.match(e.url, /^https:\/\//, e.id);
     assert.ok(['comeback', 'grind', 'start', 'rest'].includes(e.kind), e.id);
-    for (const ng of NG_WORDS) assert.ok(!e.fire.includes(ng) && !e.story.includes(ng), `${e.id} に「${ng}」`);
+    // 事実の文の中の言葉は、管理人が確認したもの（ngChecked）だけ通す。決め台詞（fire）は例外なし
+    for (const ng of NG_WORDS) {
+      assert.ok(!e.fire.includes(ng), `${e.id} の決め台詞に「${ng}」`);
+      if (!(e.ngChecked || []).includes(ng)) assert.ok(!e.story.includes(ng), `${e.id} に「${ng}」（使うなら管理人に確認して ngChecked に入れる）`);
+    }
   }
 });
 
