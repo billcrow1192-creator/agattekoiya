@@ -157,7 +157,7 @@ textarea:focus { outline: none; border-color: var(--yellow); }
 @keyframes slam { from { transform: scale(1.06); opacity: 0; } to { transform: none; opacity: 1; } }
 @media (prefers-reduced-motion: reduce) { .slam { animation: none; } .toast { transition: none; } }
 
-.page { padding: 28px 0 80px; }
+.page { padding-top: 28px; padding-bottom: 80px; }
 .page h1 { font-family: var(--display); font-weight: 400; font-size: 30px; margin: 0; }
 .page h2 { font-size: 18px; margin: 28px 0 6px; }
 .page p, .page li { font-size: 15px; }
@@ -243,3 +243,30 @@ body.cp-open { overflow: hidden; }
 .share-opt { display: flex; gap: 8px; align-items: flex-start; margin-top: 12px; font-size: 12px; color: var(--muted); line-height: 1.6; }
 .share-opt input { margin-top: 3px; accent-color: var(--red); }
 .share-opt a { color: var(--muted); }
+
+/* ───── メンバー限定：その言葉に、動かされた人たち ───── */
+.member-badge { font: 900 11px var(--font); letter-spacing: .2em; color: #111; background: var(--yellow); padding: 4px 8px; }
+.inf-title { font-family: var(--display); font-weight: 400; font-size: clamp(30px, 8vw, 44px); line-height: 1.2; margin: 6px 0 12px; }
+.inf-note { margin: 14px 0 6px; padding: 10px 12px; border: 1px dashed var(--yellow); color: var(--yellow); font-size: 13px; font-weight: 700; }
+.inf-book { margin-top: 22px; border: 1px solid var(--line); border-left: 4px solid var(--red); background: var(--bg-2); padding: 16px; }
+.inf-book h2 { margin: 0; font-size: 18px; font-weight: 900; line-height: 1.5; }
+.inf-year { margin: 4px 0 0; font-size: 12px; color: var(--muted); }
+.inf-line { margin: 10px 0 0; font-size: 14px; color: var(--yellow); font-weight: 700; }
+.inf-people { display: grid; gap: 8px; margin-top: 12px; }
+.inf-person { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; text-align: left; padding: 10px 12px; background: #0f0f11; color: var(--ink); border: 2px solid #3a3a40; border-radius: 4px; cursor: pointer; font: inherit; }
+.inf-person:hover { border-color: var(--ink); }
+.ip-name { font-weight: 900; font-size: 16px; }
+.ip-role { font-size: 12px; color: var(--muted); }
+.person-dlg { border: 2px solid var(--red); background: #121214; color: var(--ink); padding: 0; max-width: 560px; width: calc(100% - 24px); }
+.person-dlg::backdrop { background: rgba(0, 0, 0, .7); }
+.pd-inner { padding: 20px 18px; }
+.pd-word { margin: 0; font-size: 12px; color: var(--yellow); font-weight: 700; }
+.person-dlg h2 { font-family: var(--display); font-weight: 400; font-size: 28px; margin: 8px 0 0; }
+.pd-role { margin: 2px 0 0; font-size: 13px; color: var(--muted); }
+.pd-episode { margin: 14px 0 0; font-size: 15px; line-height: 1.85; }
+.pd-sns { margin: 10px 0 0; font-size: 13px; color: var(--muted); }
+.pd-src { margin: 14px 0 16px; font-size: 12px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.pd-src a { color: var(--muted); }
+.pd-level { padding: 2px 6px; border: 1px solid #4a4a50; font-weight: 700; }
+.pd-level.primary { border-color: var(--yellow); color: var(--yellow); }
+.pd-level.mixed { border-color: var(--red); color: var(--red); }

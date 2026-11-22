@@ -205,6 +205,21 @@ try {
     await c6.close();
   });
 
+  await step('メンバー限定：言葉・本ごとに人物、押すとエピソードと出典', async () => {
+    const { ctx: c, page: p } = await newPage();
+    await p.goto(`${base}/members/influence.html`);
+    await p.waitForSelector('.inf-book');
+    assert.ok((await p.$$('.inf-book')).length >= 10);
+    assert.equal(await p.getAttribute('meta[name="robots"]', 'content'), 'noindex, nofollow');
+    await p.click('[data-person="steve-jobs"]');
+    await p.waitForSelector('#personDlg[open]');
+    assert.match(await p.textContent('#personEpisode'), /Stay hungry/);
+    assert.match(await p.getAttribute('#personSrc', 'href'), /^https:/);
+    await shot(p, 'members-influence');
+    await noHScroll(p);
+    await c.close();
+  });
+
   await step('相談窓口・プライバシー・404', async () => {
     const { ctx: c, page: p } = await newPage();
     await p.goto(`${base}/safety.html`);

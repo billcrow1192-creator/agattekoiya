@@ -184,3 +184,19 @@ test('レパートリー：戦歴・教本は30件以上。教官の言葉は口
   const ids = new Set(EPISODES.map((e) => e.id));
   assert.equal(ids.size, EPISODES.length, 'id の重複なし');
 });
+
+test('メンバー限定「その言葉に、動かされた人たち」：全員に出典・確からしさ・アプリの言葉とのつながり', async () => {
+  const { INFLUENCES, LEVEL_LABEL } = await import('../js/data/influences.js');
+  const ids = new Set();
+  assert.ok(INFLUENCES.length >= 10);
+  for (const b of INFLUENCES) {
+    assert.ok(b.title && b.people.length, b.id);
+    assert.ok((b.related || []).some((id) => WORDS.some((w) => w.id === id) || EPISODES.some((e) => e.id === id)), `${b.id} がアプリの言葉とつながっていない`);
+    for (const p of b.people) {
+      assert.ok(!ids.has(p.id), p.id); ids.add(p.id);
+      assert.ok(p.name && p.role && p.episode && p.source, p.id);
+      assert.match(p.url, /^https:\/\//, p.id);
+      assert.ok(LEVEL_LABEL[p.level], `${p.id} の確からしさ`);
+    }
+  }
+});
