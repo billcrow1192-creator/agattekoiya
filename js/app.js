@@ -3,7 +3,7 @@ import { findWord, applyFeedback, markShown, streak, dateKey, CORPUS_INFO } from
 import { hardSelect } from './hard.js';
 import { getCoach, REACTIONS } from './coaches.js';
 import { todayCoach, lastCoach, showCoachPicker, coachChipHTML } from './coach-ui.js';
-import { sendReaction } from './feedback.js';
+import { sendReaction, sharingOn, setSharing } from './feedback.js';
 import { load, update, clearAll, uid } from './storage.js';
 import { renderSafetyBox } from './safety-ui.js';
 import { episodeHTML } from './episode-ui.js';
@@ -224,6 +224,9 @@ function init() {
   const pick = (closable) => showCoachPicker({ closable, onPick: (id) => { coachId = id; paintChip(); if (session.result) { session.result = null; renderResult(); } } });
   chip.addEventListener('click', () => pick(true));
   if (!todayCoach()) pick(false);
+  const share = $('#shareToggle');
+  share.checked = sharingOn();
+  share.addEventListener('change', () => { setSharing(share.checked); toast(share.checked ? '送る設定にした。協力に感謝する。' : '送らない設定にした。記録はこの端末の中だけ。'); });
   $('#corpusInfo').textContent = `言葉 ${CORPUS_INFO.total}語（古典・ことわざ ${CORPUS_INFO.quotes}語）`;
   syncForm();
   renderHeader();

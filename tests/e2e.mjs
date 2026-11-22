@@ -26,6 +26,9 @@ async function newPage(opts = {}) {
   page.on('requestfailed', (r) => { if (!/fonts\.(googleapis|gstatic)\.com/.test(r.url())) errors.push(`requestfailed: ${r.url()}`); });
   page.on('response', (r) => { if (r.status() >= 400) errors.push(`HTTP ${r.status()}: ${r.url()}`); });
   await page.route(/fonts\.(googleapis|gstatic)\.com/, (r) => r.abort());
+  // 反応の集計API（本番には送らない）
+  page.sent = [];
+  await page.route('**/api/agattekoiya-feedback', (r) => { page.sent.push(JSON.parse(r.request().postData() || '{}')); r.fulfill({ status: 200, contentType: 'application/json', body: '{"recorded":true}' }); });
   return { ctx, page };
 }
 async function step(name, fn) {
@@ -161,6 +164,16 @@ try {
     assert.equal(d.reactions.length, 2);
     assert.equal(d.prefs.disliked.length, 1, '違った言葉は二度と出さない');
     assert.match(await p.textContent('#reactNote'), /その通りっす」1回／「なんか違うっす」1回/);
+    // 名前なしで送るのは決まった項目だけ（ひとことは送らない）
+    assert.equal(p.sent.length, 2);
+    assert.deepEqual(Object.keys(p.sent[0]).sort(), ['coach', 'concern', 'energy', 'mood', 'react', 'visitorId', 'wordId']);
+    assert.match(p.sent[0].visitorId, /^[0-9a-f-]{36}$/);
+    // 送らない設定にすると、送らない
+    await p.uncheck('#shareToggle');
+    await p.click('[data-act="more"]');
+    await p.waitForTimeout(200);
+    await p.click('[data-react="agree"]');
+    assert.equal(p.sent.length, 2, '送らない設定では送らない');
     await shot(p, 'app-react');
     await c.close();
   });

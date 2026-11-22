@@ -1,9 +1,17 @@
 // 言葉への反応（その通りっす／なんか違うっす）を、匿名で数えるための送信。
 // 送るのは「どの言葉に、どの教官で、どんな気分の時に、どう反応したか」だけ。
 // 書いた文章・名前・メールは送らない。番号はこのブラウザで作ったランダムな番号だけ。
-// 送り先（H3Y の集計API）が公開されるまでは FEEDBACK_API を空にして、何も送らない。
-export const FEEDBACK_API = '';
+// 送り先は H3Y の集計API。アプリの「戦績」の下で、送らない設定にもできる。
+export const FEEDBACK_API = 'https://www.h3y.jp/api/agattekoiya-feedback';
 const KEY = 'agattekoiya:visitor';
+const OFF = 'agattekoiya:share-off';
+
+export function sharingOn() {
+  try { return localStorage.getItem(OFF) !== '1'; } catch { return false; }
+}
+export function setSharing(on) {
+  try { if (on) localStorage.removeItem(OFF); else localStorage.setItem(OFF, '1'); } catch { /* noop */ }
+}
 
 function visitorId() {
   try {
@@ -14,7 +22,7 @@ function visitorId() {
 }
 
 export function sendReaction(payload) {
-  if (!FEEDBACK_API) return;
+  if (!FEEDBACK_API || !sharingOn()) return;
   const id = visitorId();
   if (!id) return;
   try {
