@@ -65,7 +65,7 @@ section.block { padding: 64px 0; border-bottom: 1px solid var(--line); }
 .vs .hard { border-color: var(--red); }
 .vs .hard p { font-weight: 900; }
 .vs p { margin: 8px 0 0; font-size: 15px; }
-.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 28px; counter-reset: s; }
+.steps { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 28px; counter-reset: s; }
 .steps li { list-style: none; border-top: 4px solid var(--red); background: var(--bg-2); padding: 18px; }
 .steps li::before { counter-increment: s; content: '0' counter(s); font-family: var(--display); font-size: 30px; color: var(--red); display: block; line-height: 1; }
 .steps h3 { margin: 10px 0 4px; font-size: 18px; font-weight: 900; }
@@ -157,3 +157,14 @@ textarea:focus { outline: none; border-color: var(--yellow); }
   .vs { grid-template-columns: 1fr; }
   .hero { padding: 44px 0 40px; }
 }
+
+/* 先人の戦歴 */
+.episode { margin-top: 18px; background: #1a1a1d; border: 1px solid #3a3a40; padding: 14px; }
+.ep-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; }
+.ep-badge { background: var(--ink); color: #111; font-weight: 900; font-size: 12px; letter-spacing: .2em; padding: 3px 8px; }
+.ep-who { font-weight: 900; font-size: 16px; }
+.ep-role { font-size: 12px; color: var(--muted); }
+.ep-story { margin: 10px 0 0; font-size: 15px; line-height: 1.75; }
+.ep-fire { margin: 10px 0 0; font-weight: 900; font-size: 16px; color: var(--yellow); }
+.ep-src { margin: 8px 0 0; font-size: 11px; color: var(--muted); }
+.ep-src a { color: var(--muted); }

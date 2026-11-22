@@ -1,5 +1,6 @@
 // LP のデモ：気分を押すと、ハードモードの言葉が一つ出る（保存はしない）
 import { hardSelect } from './hard.js';
+import { episodeHTML } from './episode-ui.js';
 
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const out = document.querySelector('#demoResult');
@@ -14,6 +15,7 @@ document.querySelector('#demoMoods').addEventListener('click', (e) => {
       <p class="opener">${esc(r.opener)}</p>
       <blockquote class="word"><p class="word-text">${esc(r.word.text)}</p></blockquote>
       <div class="order"><div class="order-head"><span class="badge">指令</span><span class="deadline">${esc(r.deadline)}</span></div><p class="order-text">${esc(r.order)}</p></div>
+      ${episodeHTML(r.episode)}
       <p class="closer">${esc(r.closer)}</p>
     </article>
     <p style="margin:14px 0 0"><a class="btn hot block" href="app.html">続きはアプリで</a></p>`;

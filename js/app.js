@@ -3,6 +3,7 @@ import { findWord, applyFeedback, markShown, streak, dateKey, CORPUS_INFO } from
 import { hardSelect, DONE, SKIP, EASE } from './hard.js';
 import { load, update, clearAll, uid } from './storage.js';
 import { renderSafetyBox } from './safety-ui.js';
+import { episodeHTML } from './episode-ui.js';
 
 const $ = (s, el = document) => el.querySelector(s);
 const $$ = (s, el = document) => [...el.querySelectorAll(s)];
@@ -94,6 +95,7 @@ function renderResult() {
         <div class="order-head"><span class="badge">指令</span><span class="deadline">${esc(r.deadline)}</span></div>
         <p class="order-text">${esc(r.order)}</p>
       </div>
+      ${r.episode ? episodeHTML(r.episode) : ''}
       <p class="closer">${esc(r.closer)}</p>
     </article>
     <div class="verdict" id="verdict">${c?.result ? verdictHTML(c.result) : ''}</div>
@@ -155,7 +157,7 @@ function renderLog() {
 }
 
 function init() {
-  $('#moods').innerHTML = MOODS.map((m) => `<button type="button" class="chip mood" data-mood="${m.v}" aria-pressed="false"><span class="lv">${m.v}</span>${m.t}</button>`).join('');
+  $('#moods').innerHTML = [...MOODS].reverse().map((m) => `<button type="button" class="chip mood" data-mood="${m.v}" aria-pressed="false"><span class="lv">${m.v}</span>${m.t}</button>`).join('');
   document.addEventListener('click', (e) => {
     const b = e.target.closest('[data-mood],[data-energy],[data-concern],[data-act]');
     if (!b) return;

@@ -1,0 +1,97 @@
+// 先人の戦歴：ハードモードで進んだ人のエピソード（事実の要約は編集部の言葉。本人の言葉の直接引用はしない）
+// kind: comeback（失敗・拒絶からの逆転）/ grind（毎日の積み上げ）/ start（踏み出す）
+// 気分1〜2の日は comeback だけを出す（「すごい人と比べて落ちる」を避ける）
+// 数字は報道・本人の語りによる。諸説あるものは story に「と伝わる」「諸説」と書く。確認日：2026-11
+export const EPISODES = [
+  {
+    id: 'qasor-create', who: 'QASOR', role: 'Applied Institute CEO', kind: 'start', concerns: ['work', 'self', 'money'],
+    story: '「セミナーばっかり行ってもダメ。クリエイトしろ、それがすべてだ！」',
+    fire: '聞いて満足するな。今日、何か一つ作って出せ。',
+    source: '管理人が本人から直接聞いた言葉',
+    heard: true,
+  },
+  {
+    id: 'honda-english', who: '本田圭佑', role: 'サッカー選手・実業家', kind: 'grind', concerns: ['work', 'self'],
+    story: '毎朝5時45分に起きて、まず2時間〜2時間半、英語をやる。優先順位の高いものから片付けるためだと語っている。',
+    fire: '「忙しい」は理由にならない。やると決めたことの時間を、朝いちばんに先に取れ。',
+    source: 'GOETHE「本田圭佑『僕は毎朝5時45分に起きて、優先順位の高い英語から片付ける』」（2019年）',
+    url: 'https://goetheweb.jp/person/article/20191219-honda_shikou11',
+  },
+  {
+    id: 'honda-bunshu', who: '本田圭佑', role: 'サッカー選手・実業家', kind: 'start', concerns: ['self', 'work'],
+    story: '小学校の卒業文集に「セリエAのチームに入って、10番で活躍する」と書いた。2013年、ACミランで背番号10を背負った。',
+    fire: '書いた夢は、逆算すれば道になる。今日の一歩を、そこから逆算しろ。',
+    source: '現代ビジネス「理想像からの逆算で自分を作り上げる！ACミラン・本田圭佑の習慣」',
+    url: 'https://gendai.media/articles/-/38140',
+  },
+  {
+    id: 'son-invent', who: '孫正義', role: 'ソフトバンクグループ創業者', kind: 'grind', concerns: ['work', 'money', 'self'],
+    story: 'アメリカの大学時代、「毎日一つ発明する」と決めてノートに250以上のアイデアを書いた。試作した音声つき翻訳機をシャープに約1億円で売り、起業の元手にしたと伝わる。',
+    fire: '毎日一つ。それだけで250になる。今日の一つを出せ。',
+    source: '東洋経済オンライン ほか（本人の語りとして伝わる数字）',
+    url: 'https://toyokeizai.net/articles/-/561272',
+  },
+  {
+    id: 'dyson', who: 'ジェームズ・ダイソン', role: 'ダイソン創業者', kind: 'comeback', concerns: ['work'],
+    story: '紙パックのいらない掃除機を完成させるまでに作った試作品は5,127台。最初の製品は1983年、日本で発売された。',
+    fire: '5,126回うまくいかなくても、5,127回目がある。今日の1台を作れ。',
+    source: 'Dyson 公式「James Dyson」ほか',
+    url: 'https://www.dyson.ie/james-dyson',
+  },
+  {
+    id: 'airbnb', who: 'Airbnb 創業者たち', role: 'ブライアン・チェスキー ほか', kind: 'comeback', concerns: ['money', 'work'],
+    story: 'お金が尽きかけた2008年、大統領選にちなんだシリアル「Obama O’s」を作って売り、約3万ドルを稼いでカードの借金を返した。その話がきっかけで Y Combinator に入れた。',
+    fire: '道がないなら、売り物を自分で作れ。手を止めるな。',
+    source: 'Fortune（2023年4月19日）',
+    url: 'https://fortune.com/2023/04/19/airbnb-ceo-cereal-box-investors-changed-everything-billion-dollar-company/',
+  },
+  {
+    id: 'spacex', who: 'SpaceX', role: 'イーロン・マスクのロケット会社', kind: 'comeback', concerns: ['work', 'money'],
+    story: '最初のロケット Falcon 1 は3回続けて失敗した。2008年9月、4回目で民間の液体燃料ロケットとして初めて地球を回る軌道に届いた。4回目が失敗していたら会社は続かなかった、とマスクは振り返っている。',
+    fire: '3回落ちても、4回目を打て。',
+    source: 'Space.com（2008年）／Teslarati',
+    url: 'https://www.space.com/5905-spacex-successfully-launches-falcon-1-rocket-orbit.html',
+  },
+  {
+    id: 'schultz', who: 'ハワード・シュルツ', role: 'スターバックスを育てた経営者', kind: 'comeback', concerns: ['work', 'people', 'money'],
+    story: '最初のコーヒー店のお金を集めるため、1年かけて242人に話し、217人に断られた。',
+    fire: '217回の「NO」の先に、25の「YES」がある。今日、一人に頼みに行け。',
+    source: 'シュルツ『スターバックス成功物語（Pour Your Heart Into It）』の記述として各紙が紹介',
+    url: 'https://au.finance.yahoo.com/news/story-bill-gates-dad-saved-starbucks-165517341.html',
+  },
+  {
+    id: 'rowling', who: 'J.K.ローリング', role: '作家', kind: 'comeback', concerns: ['work', 'self'],
+    story: '『ハリー・ポッター』の原稿は12社に断られたと伝わる（社数は諸説）。拾ったのは、社長の8歳の娘が「続きが読みたい」と言った出版社だった。',
+    fire: '断られた数は、出し続けた証拠だ。次に出せ。',
+    source: 'NPR ほか',
+    url: 'https://www.npr.org/transcripts/142437700',
+  },
+  {
+    id: 'jobs', who: 'スティーブ・ジョブズ', role: 'Apple 共同創業者', kind: 'comeback', concerns: ['work', 'self'],
+    story: '30歳の時、自分で作った Apple を追い出された。そこから NeXT と Pixar を立ち上げ、12年後に Apple へ戻った。',
+    fire: '追い出された場所にも、戻れる。止まるな。',
+    source: 'スタンフォード大学 卒業式スピーチ（2005年）',
+    url: 'https://news.stanford.edu/stories/2005/06/youve-got-find-love-jobs-says',
+  },
+  {
+    id: 'bezos', who: 'ジェフ・ベゾス', role: 'Amazon 創業者', kind: 'start', concerns: ['work', 'self', 'money'],
+    story: '1994年、ウォール街の会社の副社長の職を辞めて Amazon を始めた。「80歳になった自分が後悔しないか」で決めたという（後悔最小化の考え方）。',
+    fire: 'やらなかった後悔は、ずっと残る。今日、手をつけろ。',
+    source: 'Fortune（2026年11月3日、2001年のインタビューから）',
+    url: 'https://fortune.com/2026/11/03/jeff-bezos-regret-framework-career-guidance-quit-wall-street-found-amazon-now-billionaire/',
+  },
+  {
+    id: 'yanai', who: '柳井正', role: 'ファーストリテイリング（ユニクロ）創業者', kind: 'comeback', concerns: ['work'],
+    story: '自分の歩みをまとめた本に『一勝九敗』と名づけた。新しいことを10回やれば9回は失敗する、という考えからだ。',
+    fire: '9回負けても、1勝で取り返せ。打席に立て。',
+    source: '柳井正『一勝九敗』（新潮社）',
+    url: 'https://www.shinchosha.co.jp/book/128451/',
+  },
+  {
+    id: 'pg', who: 'ポール・グレアム', role: 'Y Combinator 創業者・投資家', kind: 'start', concerns: ['work', 'people'],
+    story: 'エッセイ「Do Things that Don’t Scale」で、生まれたばかりの会社は、最初のユーザーを一人ずつ自分の手で集めるべきだと書いた。',
+    fire: '仕組みを考える前に、まず一人に会え。',
+    source: 'Paul Graham「Do Things that Don’t Scale」（2013年）',
+    url: 'https://paulgraham.com/ds.html',
+  },
+];

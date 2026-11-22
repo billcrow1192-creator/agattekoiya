@@ -1,10 +1,10 @@
 // ハードモードの伝え方のテスト（人格を否定しない・危ない時は止まる）
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { OPENERS, JABS, LOW_ENERGY, CLOSERS, DONE, SKIP, EASE, NG_WORDS, hardSelect, toneMood } from '../js/hard.js';
+import { OPENERS, JABS, LOW_ENERGY, CLOSERS, CLOSERS_HARD, DONE, SKIP, EASE, NG_WORDS, hardSelect, toneMood } from '../js/hard.js';
 import { WORDS, CORPUS_INFO } from '../js/engine.js';
 
-const ALL_LINES = [...Object.values(OPENERS).flat(), ...Object.values(JABS).flat(), ...LOW_ENERGY, ...CLOSERS, ...DONE, ...SKIP, EASE];
+const ALL_LINES = [...Object.values(OPENERS).flat(), ...Object.values(JABS).flat(), ...LOW_ENERGY, ...CLOSERS, ...CLOSERS_HARD, ...DONE, ...SKIP, EASE];
 
 test('言葉は「落ちません。」と同じ1000語以上', () => {
   assert.ok(WORDS.length >= 1000, `今 ${WORDS.length}`);
@@ -53,8 +53,40 @@ test('落ちている日でも、背中を押す強すぎる言葉（push だけ
   }
 });
 
+test('いちばん厳しい締めは、落ちている日（気分1〜2）には出さない', () => {
+  for (const mood of [1, 2]) for (let i = 0; i < 200; i++) {
+    const r = hardSelect({ mood, energy: 2 }, {}, { seed: `h${mood}-${i}` });
+    assert.ok(!CLOSERS_HARD.includes(r.closer), r.closer);
+  }
+});
+
 test('「きつすぎる」で外した言葉は、二度と選ばれない', () => {
   const first = hardSelect({ mood: 3, energy: 2 }, {}, { seed: 'x' });
   const again = hardSelect({ mood: 3, energy: 2 }, { disliked: [first.word.id] }, { seed: 'x' });
   assert.notEqual(again.word.id, first.word.id);
+});
+
+import { EPISODES } from '../js/data/episodes.js';
+import { pickEpisode } from '../js/hard.js';
+
+test('先人の戦歴：全部に出典URLがあり、決まり文句にNG語がない', () => {
+  assert.ok(EPISODES.length >= 10);
+  const ids = new Set();
+  for (const e of EPISODES) {
+    assert.ok(!ids.has(e.id), e.id); ids.add(e.id);
+    for (const k of ['who', 'role', 'story', 'fire', 'source']) assert.ok(e[k], `${e.id} の ${k}`);
+    if (!e.heard) assert.match(e.url, /^https:\/\//, e.id);
+    assert.ok(['comeback', 'grind', 'start'].includes(e.kind), e.id);
+    for (const ng of NG_WORDS) assert.ok(!e.fire.includes(ng) && !e.story.includes(ng), `${e.id} に「${ng}」`);
+  }
+});
+
+test('落ちている日（気分1〜2）の戦歴は「失敗からの逆転」だけ', () => {
+  for (const mood of [1, 2]) for (let i = 0; i < 50; i++) {
+    for (const concern of [null, 'work', 'money', 'self', 'people', 'health']) {
+      assert.equal(pickEpisode(mood, concern, `s${i}`).kind, 'comeback');
+    }
+  }
+  const r = hardSelect({ mood: 4, energy: 2, concern: 'work' }, {}, { seed: 'e' });
+  assert.ok(r.episode && r.episode.who);
 });
