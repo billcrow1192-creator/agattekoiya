@@ -243,3 +243,4 @@ body.cp-open { overflow: hidden; }
 .share-opt { display: flex; gap: 8px; align-items: flex-start; margin-top: 12px; font-size: 12px; color: var(--muted); line-height: 1.6; }
 .share-opt input { margin-top: 3px; accent-color: var(--red); }
 .share-opt a { color: var(--muted); }
+.cp-title:focus { outline: none; }

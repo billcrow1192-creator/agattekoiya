@@ -189,6 +189,12 @@ try {
     assert.ok(await p6.isHidden('#fromOchi'), 'ふつうに開いた時は出さない');
     await p6.goto(`${base}/app.html#from=ochimasen&m=3&e=3&c=money`);
     await p6.reload();
+    // 今日すでに選んでいても、落ちません。から来た時は教官を選び直してもらう（勝手に男性鬼教官にしない）
+    await p6.waitForSelector('.coach-pick');
+    assert.match(await p6.textContent('#coachBtn'), /教官を選ぶ/);
+    await p6.click('[data-coach="female"]');
+    await p6.waitForSelector('.coach-pick', { state: 'detached' });
+    assert.match(await p6.textContent('#coachBtn'), /女性鬼教官/);
     await p6.waitForSelector('#fromOchi:not([hidden])');
     assert.match(await p6.textContent('#fromOchi'), /落ちません。から来たな。/);
     assert.equal(await p6.getAttribute('#fromOchi a', 'href'), 'https://ochimasen.h3y.jp/app.html');

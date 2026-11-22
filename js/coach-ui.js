@@ -38,7 +38,7 @@ export function showCoachPicker({ onPick, closable = false } = {}) {
     <div class="tape" aria-hidden="true"></div>
     <div class="cp-inner">
       <p class="cp-kicker">HARD MODE</p>
-      <h2 class="cp-title" id="coachPickTitle">今日の教官は…</h2>
+      <h2 class="cp-title" id="coachPickTitle" tabindex="-1">今日の教官は…</h2>
       <div class="cp-cards">
         ${Object.values(COACHES).map((c) => `
           <button type="button" class="cp-card cp-${c.id}" data-coach="${c.id}">
@@ -71,7 +71,8 @@ export function showCoachPicker({ onPick, closable = false } = {}) {
     onPick?.(c.id);
     setTimeout(close, reduce ? 300 : 1400);
   });
-  setTimeout(() => el.querySelector('[data-coach]')?.focus(), 50);
+  // 最初は見出しにフォーカス（どちらかの教官に枠がついて「選ばれている」ように見えないように）
+  setTimeout(() => el.querySelector('.cp-title')?.focus({ preventScroll: true }), 50);
   return el;
 }
 

@@ -219,20 +219,25 @@ function init() {
     renderResult(); renderHeader(); renderLog(); toast('全部消した。ゼロからだ。');
     b.dataset.armed = ''; b.textContent = '記録を全部消す';
   });
-  // 今日の教官
+  // 今日の教官：選ぶまでは「教官を選ぶ」と出し、勝手に男性鬼教官にしない
+  // 「落ちません。」から来た時は、今日すでに選んでいても毎回選び直してもらう
+  const fromOchi = parseFromOchimasen(location.hash);
+  let picked = !!todayCoach() && !fromOchi;
   const chip = $('#coachBtn');
-  const paintChip = () => { chip.innerHTML = coachChipHTML(coachId); chip.className = `coach-chip ${coachId}`; };
+  const paintChip = () => {
+    chip.innerHTML = picked ? coachChipHTML(coachId) : '<span aria-hidden="true">鬼</span> 教官を選ぶ';
+    chip.className = `coach-chip ${picked ? coachId : 'unpicked'}`;
+  };
   paintChip();
-  const pick = (closable) => showCoachPicker({ closable, onPick: (id) => { coachId = id; paintChip(); if (session.result) { session.result = null; renderResult(); } } });
-  chip.addEventListener('click', () => pick(true));
-  if (!todayCoach()) pick(false);
+  const pick = (closable) => showCoachPicker({ closable, onPick: (id) => { coachId = id; picked = true; paintChip(); if (session.result) { session.result = null; renderResult(); } } });
+  chip.addEventListener('click', () => pick(picked));
+  if (!picked) pick(false);
   const share = $('#shareToggle');
   share.checked = sharingOn();
   share.addEventListener('change', () => { setSharing(share.checked); toast(share.checked ? '送る設定にした。協力に感謝する。' : '送らない設定にした。記録はこの端末の中だけ。'); });
   // 「落ちません。」の「……ぬるい？」から来た人：答えを入力済みにして迎える
-  const from = parseFromOchimasen(location.hash);
-  if (from) {
-    Object.assign(form, from);
+  if (fromOchi) {
+    Object.assign(form, fromOchi);
     $('#fromOchi').hidden = false;
   }
   $('#corpusInfo').textContent = `言葉 ${CORPUS_INFO.total}語（古典・ことわざ ${CORPUS_INFO.quotes}語）`;
