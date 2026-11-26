@@ -1,7 +1,7 @@
 // 言葉データ（RAG）Version 2.1.1 — docs/corpus/import/v2_1-classics.csv, docs/corpus/import/v2_1-originals-doraku.csv, docs/corpus/import/v2_1-originals-extra.csv, docs/corpus/import/v2_1-originals-learn.csv, docs/corpus/import/v2_1-originals-people.csv, docs/corpus/import/v2_1-originals-self.csv, docs/corpus/import/v2_1-originals-work.csv, docs/corpus/import/v2_1-proverbs.csv から生成。直接は編集しない。
 export const CORPUS_V2_1 = {
   "version": "2.1.1",
-  "date": "2026-11-22",
+  "date": "2026-11-26",
   "note": "",
   "items": [
     {
@@ -437,7 +437,7 @@ export const CORPUS_V2_1 = {
       "id": "c21-franklin-jikan",
       "kind": "quote",
       "text": "時間を大切にしよう。人生は時間でできているのだから。",
-      "original": "Dost thou love life? Then do not squander time",
+      "original": "Dost thou love life? Then do not squander time, for that’s the stuff life is made of.",
       "author": "ベンジャミン・フランクリン",
       "field": "政治家・科学者",
       "category": [
